@@ -8,20 +8,13 @@ description: "Implement a story file with auto-heal loop and scoring gates."
 
 $ARGUMENTS
 
-## Skill Discovery
+# Implement a Developer Story
 
-Before executing, search the project for any installed agent skills related to:
+## User Input
 
-- **Metadata/Objects** — custom objects, fields, permission sets, validation rules
-- **Apex development** — bulkification, security, Separation of Concerns, governor limits
-- **Flow development** — flow types, bulkification patterns, governor limits
-- **LWC development** — component architecture, reactivity, accessibility, performance
-- **Testing** — PNB patterns, test data factories, code coverage, test execution
-- **Debugging** — log analysis, governor limit detection
+$ARGUMENTS
 
-Search locations: `.agents/skills/`, `.specify/extensions/`, `.claude/commands/`
-If found, load their instructions and invoke them for the corresponding implementation layer.
-If not found, use built-in knowledge of Salesforce development best practices.
+## Prerequisites
 
 ## Extension Configuration
 
@@ -122,9 +115,9 @@ Compare actual scores with the story's required thresholds:
 
 1. **Initial Check**: If ALL gates pass → proceed. If any gate FAILS → Enter **Auto-Heal Mode**.
 2. **Auto-Heal Loop (Agentic)**:
-   - **Analyze**: Review the score report. Identify specific points deducted.
+   - **Analyze**: Review the score report. Identify specific checklist failures by following the rubric in `docs/scoring.md`.
    - **Refactor**: Automatically modify the code to address issues.
-   - **Re-score**: Rerun scoring for that layer.
+   - **Re-score**: Rerun evaluation against the `docs/scoring.md` checklist.
    - **Retry Limit**: Up to **3 times** per layer.
 3. **Final Validation**: If score achieved within 3 retries → proceed. Otherwise STOP and report blockers.
 

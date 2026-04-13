@@ -8,26 +8,6 @@ description: "Create a technical plan with force-app structure and blast radius 
 
 $ARGUMENTS
 
-## Skill Discovery
-
-Before executing, search the project for any installed agent skills related to:
-
-- **Metadata/Objects** — field types, relationships, permissions, naming conventions
-- **Apex development** — Separation of Concerns, layer patterns, bulkification
-- **LWC development** — PICKLES methodology, component architecture
-- **Flow development** — flow type selection, bulkification patterns
-- **SOQL** — query optimization, relationship traversal
-- **Permissions** — Permission Set architecture
-- **Integration** — Named Credential patterns, External Services
-- **Diagramming** — ERD and architecture diagram generation
-
-Search locations: `.agents/skills/`, `.specify/extensions/`, `.claude/commands/`
-If found, load and apply their best practices. If not found, use built-in knowledge.
-
-## Extension Configuration
-
-Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
-
 ## Prerequisites
 
 - Spec exists: `.specify/specs/NNN-feature-name/spec.md` (status: Clarified or Draft)

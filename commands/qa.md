@@ -8,20 +8,6 @@ description: "Generate manual test scripts and run automated Apex/Jest tests."
 
 $ARGUMENTS
 
-## Skill Discovery
-
-Before executing, search the project for any installed agent skills related to:
-
-- **Testing** — test execution, code coverage analysis, PNB patterns
-- **Debugging** — log analysis, performance bottleneck detection
-
-Search locations: `.agents/skills/`, `.specify/extensions/`, `.claude/commands/`
-If found, load and apply their best practices. If not found, use built-in knowledge.
-
-## Extension Configuration
-
-Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
-
 ## Prerequisites
 
 - Story status is **REVIEW** or higher (code review completed)

@@ -8,21 +8,6 @@ description: "Promote Salesforce code across environments (Dev to QA to UAT to P
 
 $ARGUMENTS
 
-## Skill Discovery
-
-Before executing, search the project for any installed agent skills related to:
-
-- **Deployment** — Salesforce deployment patterns, phased deployment, Flow activation
-- **Testing** — post-deployment test execution, regression analysis
-
-Search locations: `.agents/skills/`, `.specify/extensions/`, `.claude/commands/`
-If found, load and apply their best practices. If not found, use built-in knowledge.
-
-## Extension Configuration
-
-Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
-Use org aliases from `project.org_aliases` and `deployment.test_level` settings.
-
 ## Prerequisites
 
 Depending on target environment:

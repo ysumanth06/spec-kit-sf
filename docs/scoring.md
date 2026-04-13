@@ -2,6 +2,11 @@
 
 SFSpeckit enforces quality through a **555-point scoring system** across four dimensions.
 
+## The Standalone Evaluator
+
+> [!IMPORTANT]
+> This extension uses a **Standalone AI Evaluator** model. It does not rely on external "foundation skills" for scoring. The AI Agent acts as both the developer and the judge, using its internal knowledge of Salesforce architecture and the specific checklists below.
+
 ## Scoring Breakdown
 
 | Layer | Max Score | Default Threshold | What's Scored |
@@ -9,106 +14,57 @@ SFSpeckit enforces quality through a **555-point scoring system** across four di
 | **Metadata** | 120 | 84 (70%) | Objects, fields, permissions, naming, relationships |
 | **Apex** | 150 | 90 (60%) | Bulkification, security, SoC, error handling, SOLID |
 | **Flow** | 110 | — | Bulkification, naming, fault paths, DML optimization |
-| **LWC** | 165 | 125 (76%) | PICKLES, SLDS 2, accessibility, performance, reactivity |
+| **LWC** | 165 | 125 (76%) | Component architecture, SLDS, accessibility, performance |
 | **Total** | **555** | — | Weighted across all applicable layers |
 
-> Not all layers apply to every story. A metadata-only (DECLARATIVE) story is scored on the 120-point Metadata scale only.
+---
 
-## When Scoring Happens
+## Authoritative Reference Logic
 
-| Command | Scoring Event |
-|---------|--------------|
-| `/speckit.sf.implement` | Per-layer scoring during implementation |
-| `/speckit.sf.pr` | Full scoring suite + security scanner |
-| `/speckit.sf.score` | Feature-level dashboard across all stories |
-| `/speckit.sf.verify` | Evidence document with coverage metrics |
+When evaluating complex architectural decisions, the AI Agent follows these routing principles to simulate official documentation lookup:
 
-## Metadata Scoring (120 points)
+### 1. Identify the Doc Family
+| Family | Typical Source | Use Case |
+|--------|----------------|----------|
+| **Developer Docs** | `developer.salesforce.com/docs/...` | Apex methods, APIs, LWC hooks, metadata XML |
+| **Salesforce Help** | `help.salesforce.com/...` | Setup UI, feature limits, standard object behavior |
+| **Platform Guides** | `developer.salesforce.com/docs/platform/...` | Modern guides (Agentforce, Enhanced Messaging) |
 
-| Category | Points | Criteria |
-|----------|--------|----------|
-| Naming Conventions | 20 | API names, labels, descriptions |
-| Field Types | 20 | Correct types (Picklist vs Text, Lookup vs MD) |
-| Relationships | 15 | Proper cascade, junction objects |
-| Validation Rules | 15 | Coverage, error messages |
-| Permission Sets | 15 | FLS, object access, no Profile edits |
-| Record Types | 10 | Business process separation |
-| Indexes/Queries | 10 | Custom indexes for filtered lookups |
-| Documentation | 15 | Help text, descriptions |
+### 2. Best Practice Grounding
+The AI must prioritize **Official Salesforce Release Notes** and **Architect Decision Guides** over third-party blogs or outdated stack-overflow answers.
 
-## Apex Scoring (150 points)
+---
 
-| Category | Points | Criteria |
-|----------|--------|----------|
-| Bulkification | 25 | No SOQL/DML in loops, collection-based processing |
-| Security | 25 | `with sharing`, `WITH USER_MODE`, no hardcoded IDs |
-| Separation of Concerns | 25 | Service/Selector/Domain/Controller layers |
-| Error Handling | 20 | Try-catch, meaningful messages, custom exceptions |
-| Test Quality | 20 | PNB pattern, TestDataFactory, Assert class |
-| SOLID Principles | 15 | Single responsibility, loose coupling |
-| Performance | 10 | Efficient collections, lazy loading, async where appropriate |
-| Naming & Style | 10 | Consistent naming, comments on complex logic |
+## Technical Checklists (The AI Rubric)
 
-### Scanner Penalties
-- **-10 points** per Severity 3 (Moderate) PMD violation
-- **Automatic FAIL** for any Severity 1 (Critical) violation
+### Metadata (120 points)
+- **Naming (20pts)**: PascalCase for API names, clear labels, mandatory descriptions.
+- **Relationships (15pts)**: Correct use of Master-Detail vs. Lookup. Junction objects for M:M.
+- **Security (15pts)**: Permission Set-first approach. No FLS on Profiles. Field-level security covers all new fields.
+- **Scalability (15pts)**: Minimal use of Formula fields on high-volume objects (index awareness).
 
-## Flow Scoring (110 points)
+### Apex (150 points)
+- **Bulkification (25pts)**: Zero SOQL or DML inside loops. Collection-based processing (Set/List/Map).
+- **Security (25pts)**: `with sharing` present. `WITH USER_MODE` or `Security.stripInaccessible()` on all queries. No hardcoded IDs.
+- **Separation of Concerns (25pts)**: Logic separated into Service, Selector, Domain, and Controller layers (based on TAF/fflib standards).
+- **Testing (20pts)**: PNB (Positive/Negative/Bulk) pattern. High coverage (90%+) and meaningful assertions.
 
-| Category | Points | Criteria |
-|----------|--------|----------|
-| Bulkification | 20 | No DML/Get in loops |
-| Naming | 15 | Clear element names, descriptions |
-| Fault Paths | 20 | Error handling on every DML |
-| DML Optimization | 15 | Batch DML operations |
-| Flow Type | 15 | Correct type for use case |
-| Documentation | 10 | Description, notes |
-| Testing | 15 | Coverage via Apex tests |
+### Flow (110 points)
+- **Performance (20pts)**: No Get/Update elements inside loops. Fast field updates used where appropriate.
+- **Resilience (20pts)**: Fault paths on every DML operation. Meaningful error handling.
+- **Standards (15pts)**: Clear element labels, consistent naming, one record-triggered flow per object/event.
 
-## LWC Scoring (165 points)
+### LWC (165 points)
+- **Architecture (25pts)**: Clear separation of props/state. Proper use of @wire vs. imperative Apex.
+- **Accessibility (25pts)**: Keyboard navigation, ARIA labels, SLDS 2.0 design tokens.
+- **Performance (20pts)**: Minimal DOM footprint, efficient event handling (no frequent `dispatch`), `@wire` caching used correctly.
 
-| Category | Points | Criteria |
-|----------|--------|----------|
-| PICKLES Architecture | 25 | Props, Imports, Config, Keys, Lifecycle, Events, State |
-| SLDS 2 Compliance | 20 | Design tokens, Lightning components |
-| Accessibility | 25 | Keyboard nav, ARIA, screen reader |
-| Performance | 20 | Wire service, lazy loading, caching |
-| Reactivity | 20 | Tracked properties, immutable patterns |
-| Jest Tests | 25 | Component rendering, event handling, mocks |
-| Error Handling | 15 | Toast messages, loading states |
-| Naming & Style | 15 | Consistent naming, CSS custom properties |
+---
 
-### Scanner Penalties
-- **-5 points** per ESLint violation
-
-## Quality Grades
-
-| Grade | Score Range | Meaning |
-|-------|------------|---------|
-| **A** | 90–100% | Production-ready, exemplary quality |
-| **B** | 80–89% | Production-ready, minor improvements possible |
-| **C** | 70–79% | Acceptable, review recommended |
-| **D** | 60–69% | Below standard, remediation required |
-| **F** | < 60% | Not deployable, significant rework needed |
-
-## Auto-Heal
+## Auto-Heal Loop
 
 When a score falls below threshold during `/speckit.sf.implement`:
-1. The AI analyzes specific deductions
-2. Automatically refactors the code
-3. Re-runs scoring
-4. Up to 3 retries per layer
-
-If auto-heal fails after 3 attempts, the developer is notified with specific blockers.
-
-## Customizing Thresholds
-
-Override defaults in `.specify/extensions/sf/sf-config.yml`:
-
-```yaml
-scoring:
-  metadata: 80   # Lower from default 84 (70%)
-  apex: 100      # Raise from default 90 (67%)
-  lwc: 80        # Lower from default 125 (76%)
-  testing: 80    # Coverage threshold
-```
+1. **Analyze**: Agent identifies specific checklist failures.
+2. **Refactor**: Agent modifies code to address the gap.
+3. **Re-Score**: Agent re-evaluates the refactored code.
+4. **Retry Limit**: The loop repeats up to 3 times before reporting a permanent quality failure.

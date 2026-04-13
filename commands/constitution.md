@@ -8,20 +8,6 @@ description: "Establish Salesforce project principles with 9 articles and enviro
 
 $ARGUMENTS
 
-## Skill Discovery
-
-Before executing, search the project for any installed agent skills related to:
-
-- **Salesforce documentation** — official docs, metadata references
-- **Diagramming** — ERD, architecture visualization tools
-
-Search locations: `.agents/skills/`, `.specify/extensions/`, `.claude/commands/`
-If found, load and apply their best practices. If not found, use built-in knowledge.
-
-## Extension Configuration
-
-Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
-
 ## Prerequisites
 
 - Salesforce DX project initialized (`sfdx-project.json` exists)

@@ -8,20 +8,6 @@ description: "Create a Salesforce feature spec with object maps and security mod
 
 $ARGUMENTS
 
-## Skill Discovery
-
-Before executing, search the project for any installed agent skills related to:
-
-- **Salesforce documentation** — official docs, feature references
-- **Diagramming** — ERD, object relationship visualization
-
-Search locations: `.agents/skills/`, `.specify/extensions/`, `.claude/commands/`
-If found, load and apply their best practices. If not found, use built-in knowledge.
-
-## Extension Configuration
-
-Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
-
 ## Prerequisites
 
 - Constitution exists: `.specify/memory/constitution.md` (run `/speckit.sf.constitution` first)

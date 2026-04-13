@@ -8,21 +8,6 @@ description: "Generate Jira-ready developer stories with security matrices."
 
 $ARGUMENTS
 
-## Skill Discovery
-
-Before executing, search the project for any installed agent skills related to:
-
-- **Metadata/Objects** — field types, relationships, permission sets
-- **Apex development** — Separation of Concerns, TAF patterns
-- **Testing** — PNB patterns, test data factories
-
-Search locations: `.agents/skills/`, `.specify/extensions/`, `.claude/commands/`
-If found, load and apply their best practices. If not found, use built-in knowledge.
-
-## Extension Configuration
-
-Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
-
 ## Prerequisites
 
 - Plan exists: `.specify/specs/NNN-feature-name/plan.md`
