@@ -4,11 +4,11 @@ extension:
   id: "sf"
   name: "SFSpeckit — Salesforce Spec-Driven Development"
   version: "1.0.0"
-  description: "Enterprise Salesforce SDLC with 17 commands for the full SDD lifecycle."
+  description: "Enterprise Salesforce SDLC with 18 commands for the full SDD lifecycle."
   author: "Sumanth Yanamala"
   repository: "https://github.com/ysumanth06/spec-kit-sf"
   license: "MIT"
-  homepage: "https://sfspeckit.dev"
+  homepage: "https://ysumanth06.github.io/spec-kit-sf/"
 
 requires:
   speckit_version: ">=0.4.0"
@@ -25,6 +25,10 @@ requires:
 provides:
   commands:
     # === Foundation ===
+    - name: "speckit.sf.setup"
+      file: "commands/setup.md"
+      description: "Automated dependency checker and installer (sf, gh, sf-scanner)."
+
     - name: "speckit.sf.constitution"
       file: "commands/constitution.md"
       description: "Establish Salesforce project principles with 9 articles and environmental discovery."

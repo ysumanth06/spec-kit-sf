@@ -203,7 +203,7 @@ sfdx-project.json                       # Core Salesforce Config
 
 SFSpeckit has been re-architected as a Spec-Kit extension by **Sumanth Yanamala**, a Salesforce Architect, to meet the unique challenges of the Salesforce development lifecycle.
 
-Find more about the creator and his work on his **[Personal Website](https://ysumanth06.github.io/LinkedIn-Personal-Website/)**.
+Find more about the creator and his work on the **[SFSpeckit Documentation Site](https://ysumanth06.github.io/spec-kit-sf/)**.
 
 ---
 
