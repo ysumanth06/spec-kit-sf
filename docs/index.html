@@ -32,6 +32,7 @@
                         "surface-tint": "#00daf3",
                         "primary-fixed-dim": "#00daf3",
                         "surface-container-high": "#262a35",
+                        "surface-container-highest": "#313540",
                         "tertiary": "#ffeac0",
                         "on-tertiary-fixed-variant": "#594400",
                         "background": "#0f131d",
@@ -164,7 +165,7 @@
         </div>
     </section>
 
-    <!-- Core Pillars -->
+    <!-- High-Impact Pillars (Value-Driven Middle Section) -->
     <section class="py-20 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16 px-4">
             <h2 class="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">The Core Pillars</h2>
@@ -199,14 +200,14 @@
                 </div>
             </div>
 
-            <!-- Human-in-the-Loop -->
+            <!-- Architect-Scale Guardrails -->
             <div class="group bg-surface-container-low p-10 rounded-3xl border border-white/5 hover:border-primary/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full flex flex-col">
                 <div class="absolute top-0 left-0 w-2 h-full bg-primary/20 group-hover:bg-primary transition-colors"></div>
                 <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8">
-                    <span class="material-symbols-outlined text-4xl text-primary">verified_user</span>
+                    <span class="material-symbols-outlined text-4xl text-primary">verified</span>
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-4">Human-in-the-Loop</h3>
-                <p class="text-slate-400 leading-relaxed mb-6">Autonomous but governed. Built-in HITL gates (Architecture Reviews, TPO Approval, BPO Sign-off) ensure that AI power is balanced with human expertise and accountability.</p>
+                <h3 class="text-2xl font-bold text-white mb-4">Architect Guardrails</h3>
+                <p class="text-slate-400 leading-relaxed mb-6">Built for scale. Human-in-the-loop (HITL) gates ensure that every metadata sync and code push respects the Project Constitution and enterprise-grade design patterns.</p>
                 <div class="mt-auto pt-4 border-t border-white/5 flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
                     <span class="material-symbols-outlined text-sm">lock</span>
                     Strict Governance
@@ -215,7 +216,7 @@
         </div>
     </section>
 
-    <!-- SDD Strategy Section (Simplified Comparison) -->
+    <!-- Comparison Table (Responsive Overflow) -->
     <section class="py-20 px-6 bg-surface-container-lowest">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16">
@@ -253,7 +254,7 @@
         </div>
     </section>
 
-    <!-- Architect Section -->
+    <!-- Architect Section (Responsive Layout) -->
     <section class="py-20 md:py-24 px-6">
         <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
             <div class="w-full lg:w-5/12">
@@ -270,6 +271,14 @@
                     <span class="text-[10px] font-label uppercase tracking-widest text-primary font-bold">Built by an Architect</span>
                 </div>
                 <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight text-white drop-shadow-sm">Designed for <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">Enterprise Gravity</span></h2>
+                <div class="flex items-center gap-4 mb-10 justify-center lg:justify-start">
+                    <div class="h-px w-12 bg-white/10"></div>
+                    <span class="text-cyan-400 font-bold tracking-widest text-xs uppercase font-label flex items-center gap-2">
+                        <span class="material-symbols-outlined text-base">verified</span>
+                        Zero-Dependency Compliance
+                    </span>
+                    <div class="h-px w-12 bg-white/10"></div>
+                </div>
                 <p class="text-on-surface-variant text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
                     Re-architected by <span class="text-primary font-bold">Sumanth Yanamala</span> to meet the unique challenges of the Salesforce development lifecycle.
                 </p>
@@ -294,6 +303,7 @@
     </section>
 </main>
 
+<!-- Footer -->
 <footer class="w-full border-t border-white/5 bg-slate-950 p-6 md:p-12 text-on-surface">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-8">
         <div class="hidden md:block"></div>
@@ -324,6 +334,7 @@
         document.body.style.overflow = '';
     });
 
+    // Close menu when clicking links
     menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             menu.classList.add('hidden');

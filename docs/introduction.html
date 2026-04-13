@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Introduction | SFSpeckit Documentation</title>
+    <title>Introduction | SFSpeckit</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Space+Grotesk:wght@400;500;600&amp;family=Source+Code+Pro&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;700&amp;family=Fira+Code&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="assets/logo.png"/>
     <script id="tailwind-config">
@@ -74,185 +74,240 @@
                         "label": ["Space Grotesk"]
                     }
                 },
-            }
+            },
         }
     </script>
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .code-block {
-            background-color: #0d1117;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            font-family: 'Source Code Pro', monospace;
-            position: relative;
+        .glass-panel {
+            background: rgba(28, 31, 42, 0.6);
+            backdrop-filter: blur(12px);
         }
-        .sidebar-link.active {
-            background-color: rgba(0, 229, 255, 0.1);
-            color: #00e5ff;
-            border-right: 2px solid #00e5ff;
+        .tonal-shift {
+            background: linear-gradient(180deg, rgba(23, 27, 38, 0.5) 0%, rgba(15, 19, 29, 0) 100%);
         }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0f131d; }
+        ::-webkit-scrollbar-thumb { background: #313540; border-radius: 10px; }
     </style>
 </head>
-<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
-
-<!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center h-16 px-6 md:px-12 shadow-2xl">
-    <div class="text-xl font-bold tracking-tighter text-slate-100 font-headline">
-        <a href="index.html" class="flex items-center gap-2">
-            <img alt="SFSpeckit Logo" class="w-8 h-8 object-contain" src="assets/logo.png"/>
-            <span>SFSpeckit</span>
-        </a>
-    </div>
-    <div class="hidden md:flex items-center gap-8 font-bold text-sm text-slate-400">
-        <a class="text-slate-100 transition-colors" href="introduction.html">Documentation</a>
-        <a class="hover:text-slate-100 transition-colors" href="https://github.com/ysumanth06/spec-kit-sf" target="_blank">GitHub</a>
-    </div>
-    <button id="mobile-menu-toggle" class="md:hidden text-primary p-2 hover:bg-white/5 rounded-lg transition-colors">
-        <span class="material-symbols-outlined">menu</span>
-    </button>
-</nav>
-
-<div class="flex pt-16 min-h-screen">
-    <!-- Sidebar (Desktop) -->
-    <aside class="hidden md:block w-72 fixed left-0 top-16 bottom-0 overflow-y-auto bg-surface-container-low border-r border-white/5 p-6">
-        <div class="space-y-8">
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Foundation</p>
-                <div class="flex flex-col gap-1">
-                    <a href="introduction.html" class="sidebar-link active block px-4 py-2 rounded-lg text-sm font-bold transition-all">Introduction</a>
-                    <a href="constitution.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Project Constitution</a>
-                </div>
-            </div>
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Lifecycle</p>
-                <div class="flex flex-col gap-1">
-                    <a href="lifecycle.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">SDD Tactical Lifecycle</a>
-                    <a href="commands.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Slash Commands</a>
-                </div>
-            </div>
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Advanced</p>
-                <div class="flex flex-col gap-1">
-                    <a href="deployment.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Multi-Org Promotion</a>
-                </div>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0f131d]/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,229,255,0.05)] border-b border-white/5">
+    <div class="flex items-center justify-between px-6 md:px-12 py-4 w-full">
+        <div class="flex items-center gap-4">
+            <!-- Mobile Toggle -->
+            <button id="sidebar-toggle" class="md:hidden text-cyan-400 p-2 hover:bg-white/5 rounded-lg transition-colors">
+                <span class="material-symbols-outlined font-bold">menu</span>
+            </button>
+            <a href="index.html" class="flex items-center gap-4">
+                <img alt="SFSpeckit Logo" class="w-8 h-8" src="assets/logo.png"/>
+                <span class="text-xl md:text-2xl font-black tracking-tighter text-cyan-400 font-headline uppercase">SFSpeckit</span>
+            </a>
+            <div class="hidden lg:flex gap-6 items-center ml-4">
+                <a class="font-['Inter'] font-bold text-sm tracking-tight text-cyan-400 border-b-2 border-cyan-400 pb-1" href="introduction.html">Docs</a>
+                <a class="font-['Inter'] font-bold text-sm tracking-tight text-slate-400 hover:text-slate-200 transition-colors" href="https://github.com/ysumanth06/spec-kit-sf" target="_blank">GitHub</a>
             </div>
         </div>
+        <div class="flex items-center gap-4">
+            <a href="commands.html" class="bg-primary-container text-on-primary-container px-4 md:px-6 py-2 rounded-lg text-xs md:text-sm font-bold hover:bg-cyan-400/90 transition-all shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+                Get Started
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="flex min-h-screen pt-16">
+    <!-- Sidebar -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden md:hidden"></div>
+    <aside id="sidebar" class="flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] overflow-y-auto w-64 border-r border-slate-800/50 bg-[#0f131d] z-40 transition-transform duration-300 -translate-x-full md:translate-x-0">
+        <nav class="flex flex-col gap-1 px-2 py-4">
+            <a class="flex items-center gap-3 bg-cyan-400/10 text-cyan-400 border-r-2 border-cyan-400 px-4 py-3 font-bold font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="introduction.html">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">info</span>
+                <span>Introduction</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="constitution.html">
+                <span class="material-symbols-outlined">gavel</span>
+                <span>Constitution</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="lifecycle.html">
+                <span class="material-symbols-outlined">api</span>
+                <span>SDD Lifecycle</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="commands.html">
+                <span class="material-symbols-outlined">terminal</span>
+                <span>Slash Commands</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="deployment.html">
+                <span class="material-symbols-outlined">rocket_launch</span>
+                <span>Deployment</span>
+            </a>
+        </nav>
     </aside>
 
-    <!-- Main Content -->
-    <main class="w-full md:pl-72 flex-1 p-6 md:p-12 max-w-5xl mx-auto">
-        <article class="prose prose-invert prose-cyan max-w-none">
-            <h1 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Introduction</h1>
-            <p class="text-xl text-slate-400 mb-12">Building Salesforce features in the AI era requires more than just chat interaction. It requires <strong>Rigor</strong>.</p>
-
-            <div class="p-8 bg-primary/5 rounded-3xl border border-primary/20 mb-12">
-                <h3 class="flex items-center gap-2 text-primary font-black uppercase text-xs tracking-widest mb-4">
-                    <span class="material-symbols-outlined text-base">emergency</span>
-                    The SDD Strategy
-                </h3>
-                <p class="text-slate-300 font-bold mb-0">
-                    SFSpeckit is a Spec-Driven Development framework that enforces <strong>Requirement > Design > Build</strong> discipline. It eliminates AI hallucinations by locking and gating every phase of the lifecycle.
+    <!-- Main Content Canvas -->
+    <main class="md:ml-64 flex-1 p-6 md:p-12 lg:p-20 overflow-x-hidden">
+        <section class="max-w-4xl mb-24 relative">
+            <div class="relative z-10">
+                <h1 class="text-4xl md:text-7xl font-black font-headline tracking-tighter text-on-surface mb-6 leading-tight">
+                    Welcome to <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-primary-container">SFSpeckit</span>
+                </h1>
+                <p class="text-lg md:text-2xl font-label text-slate-400 mb-8 leading-relaxed max-w-2xl font-bold uppercase tracking-wide">
+                    Better Results. No Hallucinations. Enterprise Grade.
                 </p>
+                <p class="text-base md:text-lg text-slate-300 leading-relaxed max-w-3xl mb-6">
+                    SFSpeckit is a toolkit for Salesforce teams who want to use AI without the risks. Most AI tools "hallucinate" or make mistakes because they don't have a plan. SFSpeckit fixes this by enforcing **Spec-Driven Development (SDD)**.
+                </p>
+                <div class="bg-primary/5 border border-primary/20 p-6 rounded-2xl mb-8">
+                    <h3 class="text-primary font-bold mb-2 flex items-center gap-2">
+                        <span class="material-symbols-outlined">psychology</span>
+                        The Problem it Solves
+                    </h3>
+                    <p class="text-sm text-slate-400 italic">
+                        "In the era of AI-agentic coding, jumping directly into implementation is the fastest way to hit context limits, create hallucinations, and accumulate technical debt."
+                    </p>
+                </div>
             </div>
+        </section>
 
-            <h2 class="text-2xl font-bold mb-6 pt-8 border-t border-white/5">Installation</h2>
-            <p class="text-slate-400 mb-6 font-bold">Step 1: Add the extension to your Spec Kit installation:</p>
-            <div class="code-block group mb-8">
-                <pre class="text-cyan-400 text-xs md:text-sm overflow-x-auto"><code>specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archive/refs/tags/v1.0.0.zip</code></pre>
-            </div>
-
-            <p class="text-slate-400 mb-6 font-bold">Step 2: Initialize the automated environment setup:</p>
-            <div class="code-block group mb-12">
-                <pre class="text-cyan-400 text-xs md:text-sm overflow-x-auto"><code>/speckit.sf.setup</code></pre>
-                <div class="mt-4 p-3 bg-primary/10 rounded-lg border border-primary/20 text-[10px] text-primary">
-                    <span class="font-black uppercase">Auto-Checker:</span> Detects and configures Salesforce CLI, GitHub CLI, and Code Analyzer.
+        <!-- Strategy Grid (Responsive) -->
+        <section class="mb-24">
+            <h2 class="text-2xl font-headline font-bold mb-8 flex items-center gap-4 text-white">
+                The 5 Phases of SDD
+                <span class="h-px flex-1 bg-white/5"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
+                <!-- SPEC -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary">description</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-white">1. SPEC</h3>
+                    <p class="text-sm text-slate-400">Define <b>what</b> we are building. Functional requirements and user stories.</p>
+                </div>
+                <!-- PLAN -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary">architecture</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-white">2. PLAN</h3>
+                    <p class="text-sm text-slate-400">Define <b>how</b> we build it. Technical blueprints and dependency maps.</p>
+                </div>
+                <!-- BUILD -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary">code</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-white">3. BUILD</h3>
+                    <p class="text-sm text-slate-400">The actual coding phase. AI builds logic while following your rules.</p>
+                </div>
+                <!-- TEST -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary">rule</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-white">4. TEST</h3>
+                    <p class="text-sm text-slate-400">Verify everything. Automated tests and human sign-offs.</p>
+                </div>
+                <!-- DEPLOY -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary">rocket_launch</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-white">5. DEPLOY</h3>
+                    <p class="text-sm text-slate-400">Safe promotion across environments (Dev, QA, UAT, Prod).</p>
                 </div>
             </div>
 
-            <h2 class="text-2xl font-bold mb-8">Prerequisites</h2>
-            <div class="overflow-x-auto rounded-2xl border border-white/5 mb-12">
-                <table class="w-full text-left border-collapse bg-surface-container-low">
-                    <thead class="bg-surface-container-high border-b border-white/5 font-bold">
-                        <tr>
-                            <th class="p-4 text-xs uppercase tracking-widest text-slate-500">Tool</th>
-                            <th class="p-4 text-xs uppercase tracking-widest text-slate-500">Version</th>
-                            <th class="p-4 text-xs uppercase tracking-widest text-slate-500">Role</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-white/5">
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-4 font-bold text-sm">Spec Kit</td>
-                            <td class="p-4 text-slate-400 text-xs">≥ 0.4.0</td>
-                            <td class="p-4 text-slate-400 text-xs">Core Automation Engine</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-4 font-bold text-sm">Salesforce CLI</td>
-                            <td class="p-4 text-slate-400 text-xs">≥ 2.0.0</td>
-                            <td class="p-4 text-slate-400 text-xs">Org Operations & Deploy</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-4 font-bold text-sm">SF Code Analyzer</td>
-                            <td class="p-4 text-slate-400 text-xs">≥ 5.0.0</td>
-                            <td class="p-4 text-slate-400 text-xs">Security & Quality Gates</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <!-- Prerequisites & Setup -->
+            <div class="space-y-12">
+                <div>
+                    <h2 class="text-2xl font-headline font-bold mb-8 flex items-center gap-4 text-white">
+                        Installation & Setup
+                        <span class="h-px flex-1 bg-white/5"></span>
+                    </h2>
+                    <p class="text-slate-400 mb-6 font-bold uppercase text-xs tracking-widest px-4">Step 1: Install the Extension</p>
+                    <div class="bg-black/40 rounded-2xl border border-white/5 p-6 mb-8 font-mono text-sm overflow-x-auto">
+                        <code class="text-cyan-400">specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archive/refs/tags/v1.0.0.zip</code>
+                    </div>
+                    
+                    <p class="text-slate-400 mb-6 font-bold uppercase text-xs tracking-widest px-4">Step 2: Automated Environment Config</p>
+                    <div class="bg-black/40 rounded-2xl border border-white/5 p-6 font-mono text-sm overflow-x-auto">
+                        <code class="text-cyan-400">/speckit.sf.setup</code>
+                    </div>
+                </div>
 
-            <h2 class="text-2xl font-bold mb-8">Cross-IDE Compatibility</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
-                <div class="p-6 bg-surface-container rounded-2xl border border-white/5 flex flex-col items-center">
-                    <img src="https://cursor.com/favicon.ico" class="w-8 h-8 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer"/>
-                    <p class="font-bold text-sm mb-1">Cursor</p>
-                    <p class="text-[10px] text-primary font-black uppercase tracking-widest">Full Support</p>
-                </div>
-                <div class="p-6 bg-surface-container rounded-2xl border border-white/5 flex flex-col items-center">
-                    <img src="assets/logo.png" class="w-8 h-8 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer"/>
-                    <p class="font-bold text-sm mb-1">Antigravity</p>
-                    <p class="text-[10px] text-primary font-black uppercase tracking-widest">Optimized</p>
-                </div>
-                <div class="p-6 bg-surface-container rounded-2xl border border-white/5 flex flex-col items-center">
-                    <img src="https://claude.ai/favicon.ico" class="w-8 h-8 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer"/>
-                    <p class="font-bold text-sm mb-1">Claude Code</p>
-                    <p class="text-[10px] text-primary font-black uppercase tracking-widest">Full Support</p>
+                <div>
+                    <h2 class="text-2xl font-headline font-bold mb-8 flex items-center gap-4 text-white">
+                        Prerequisites
+                        <span class="h-px flex-1 bg-white/5"></span>
+                    </h2>
+                    <div class="overflow-x-auto rounded-xl border border-white/5 bg-surface-container-low">
+                        <table class="w-full text-left">
+                            <thead class="bg-white/5 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                                <tr>
+                                    <th class="px-6 py-4">Tool</th>
+                                    <th class="px-6 py-4">Version</th>
+                                    <th class="px-6 py-4">Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/5 text-sm text-slate-300">
+                                <tr>
+                                    <td class="px-6 py-4 font-bold text-white">Spec Kit</td>
+                                    <td class="px-6 py-4">≥ 0.4.0</td>
+                                    <td class="px-6 py-4">Core SDD framework engine.</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold text-white">Salesforce CLI</td>
+                                    <td class="px-6 py-4">≥ 2.0.0</td>
+                                    <td class="px-6 py-4">Metadata operations & org connectivity.</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold text-white">SF Code Analyzer</td>
+                                    <td class="px-6 py-4">≥ 5.0.0</td>
+                                    <td class="px-6 py-4">Security & Quality Gates (PMD 7).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </article>
+        </section>
     </main>
 </div>
 
-<!-- Mobile Menu Overlay (Shared across pages) -->
-<div id="mobile-menu" class="fixed inset-0 z-[60] bg-surface/95 backdrop-blur-2xl hidden md:hidden">
-    <div class="flex flex-col items-center justify-center h-full gap-8 p-6">
-        <button id="mobile-menu-close" class="absolute top-6 right-6 text-slate-400 hover:text-white">
-            <span class="material-symbols-outlined text-3xl">close</span>
-        </button>
-        <div class="flex flex-col gap-4 text-center items-center">
-            <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Foundation</p>
-            <a href="introduction.html" class="text-2xl font-black text-primary">Introduction</a>
-            <a href="constitution.html" class="text-2xl font-black text-slate-400">Constitution</a>
-            <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mt-4 mb-2">Lifecycle</p>
-            <a href="lifecycle.html" class="text-2xl font-black text-slate-400">Tactical Lifecycle</a>
-            <a href="commands.html" class="text-2xl font-black text-slate-400">Slash Commands</a>
+<!-- Footer -->
+<footer class="w-full border-t border-white/5 bg-slate-950 p-6 md:p-12 text-on-surface">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-8">
+        <div class="hidden md:block"></div>
+        <div class="flex justify-center gap-6 font-['Space_Grotesk'] text-[10px] tracking-widest font-bold uppercase text-slate-600">
+            <a class="hover:text-cyan-400 transition-colors" href="index.html">Home</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://github.com/ysumanth06/spec-kit-sf">GitHub</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://www.linkedin.com/in/ysumanth/">LinkedIn</a>
+        </div>
+        <div class="text-center md:text-right">
+            <p class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] text-cyan-400 font-bold uppercase mb-2">SFSpeckit Framework</p>
+            <p class="text-[9px] text-slate-500 uppercase tracking-widest font-bold font-['Inter'] hover:text-slate-400 transition-colors">© 2026 Spec-Driven Development</p>
         </div>
     </div>
-</div>
+</footer>
 
 <script>
-    const toggle = document.getElementById('mobile-menu-toggle');
-    const close = document.getElementById('mobile-menu-close');
-    const menu = document.getElementById('mobile-menu');
+    const toggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
 
     toggle.addEventListener('click', () => {
-        menu.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
+        sidebar.classList.toggle('-translate-x-full');
+        backdrop.classList.toggle('hidden');
+        document.body.style.overflow = sidebar.classList.contains('-translate-x-full') ? '' : 'hidden';
     });
 
-    close.addEventListener('click', () => {
-        menu.classList.add('hidden');
+    backdrop.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
         document.body.style.overflow = '';
     });
 </script>

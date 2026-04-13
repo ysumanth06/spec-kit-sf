@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Slash Commands | SFSpeckit Documentation</title>
+    <title>Slash Commands | SFSpeckit</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Space+Grotesk:wght@400;500;600&amp;family=Source+Code+Pro&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="assets/logo.png"/>
     <script id="tailwind-config">
@@ -29,7 +29,7 @@
                         "surface-container-highest": "#313540",
                         "on-secondary": "#273141",
                         "outline": "#849396",
-                        "surface-tint": "#00daf3",
+                        "surface-tint": "#00DAF3",
                         "primary-fixed-dim": "#00daf3",
                         "surface-container-high": "#262a35",
                         "tertiary": "#ffeac0",
@@ -74,216 +74,293 @@
                         "label": ["Space Grotesk"]
                     }
                 },
-            }
+            },
         }
     </script>
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        body { font-family: 'Inter', sans-serif; }
+        .label-font { font-family: 'Space Grotesk', sans-serif; }
+        .mono-font { font-family: 'Fira Code', monospace; }
+        .glass-card {
+            background: rgba(28, 31, 42, 0.6);
+            backdrop-filter: blur(20px);
         }
-        .sidebar-link.active {
-            background-color: rgba(0, 229, 255, 0.1);
-            color: #00e5ff;
-            border-right: 2px solid #00e5ff;
-        }
-        .persona-badge {
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 0.25rem 0.5rem;
-            border-radius: 9999px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .badge-tpo { background: rgba(254, 201, 49, 0.1); color: #fec931; border: 1px solid rgba(254, 201, 49, 0.2); }
-        .badge-arch { background: rgba(0, 229, 255, 0.1); color: #00e5ff; border: 1px solid rgba(0, 229, 255, 0.2); }
-        .badge-dev { background: rgba(189, 199, 220, 0.1); color: #bdc7dc; border: 1px solid rgba(189, 199, 220, 0.2); }
-        .badge-qa { background: rgba(255, 180, 171, 0.1); color: #ffb4ab; border: 1px solid rgba(255, 180, 171, 0.2); }
-        .badge-bpo { background: rgba(255, 234, 192, 0.1); color: #ffeac0; border: 1px solid rgba(255, 234, 192, 0.2); }
+        .ghost-border { border: 1px solid rgba(59, 73, 76, 0.15); }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b494c; border-radius: 10px; }
     </style>
 </head>
-<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
-
-<!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center h-16 px-6 md:px-12 shadow-2xl">
-    <div class="text-xl font-bold tracking-tighter text-slate-100 font-headline">
-        <a href="index.html" class="flex items-center gap-2">
-            <img alt="SFSpeckit Logo" class="w-8 h-8 object-contain" src="assets/logo.png"/>
-            <span>SFSpeckit</span>
+<body class="bg-background text-on-surface min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar (Responsive Standardized) -->
+<header class="fixed top-0 w-full z-50 bg-[#0f131d]/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,229,255,0.05)] border-b border-white/5">
+    <div class="flex items-center justify-between px-6 md:px-12 py-4 w-full">
+        <div class="flex items-center gap-4">
+            <!-- Mobile Toggle -->
+            <button id="sidebar-toggle" class="md:hidden text-cyan-400 p-2 hover:bg-white/5 rounded-lg transition-colors">
+                <span class="material-symbols-outlined font-bold">menu</span>
+            </button>
+            <a href="index.html" class="flex items-center gap-4">
+                <img alt="SFSpeckit Logo" class="w-8 h-8" src="assets/logo.png"/>
+                <div class="text-xl md:text-2xl font-black tracking-tighter text-cyan-400 font-headline uppercase">SFSpeckit</div>
+            </a>
+            <nav class="hidden lg:flex items-center gap-8 ml-4 font-['Inter'] font-bold text-sm tracking-tight text-slate-400">
+                <a class="text-cyan-400 border-b-2 border-cyan-400 pb-1" href="introduction.html">Docs</a>
+                <a class="hover:text-slate-200 transition-colors" href="https://github.com/ysumanth06/spec-kit-sf" target="_blank">GitHub</a>
+            </nav>
+        </div>
+        <a href="commands.html" class="bg-primary-container text-on-primary-container px-4 md:px-6 py-2 rounded-lg font-bold hover:bg-cyan-400/90 transition-all duration-300 active:scale-95 shadow-[0_0_15px_rgba(0,229,255,0.2)] text-xs md:text-sm">
+            Get Started
         </a>
     </div>
-    <div class="hidden md:flex items-center gap-8 font-bold text-sm text-slate-400">
-        <a class="text-slate-100 transition-colors" href="introduction.html">Documentation</a>
-        <a class="hover:text-slate-100 transition-colors" href="https://github.com/ysumanth06/spec-kit-sf" target="_blank">GitHub</a>
-    </div>
-    <button id="mobile-menu-toggle" class="md:hidden text-primary p-2 hover:bg-white/5 rounded-lg transition-colors">
-        <span class="material-symbols-outlined">menu</span>
-    </button>
-</nav>
+</header>
 
-<div class="flex pt-16 min-h-screen">
+<div class="flex flex-1 pt-16">
     <!-- Sidebar -->
-    <aside class="hidden md:block w-72 fixed left-0 top-16 bottom-0 overflow-y-auto bg-surface-container-low border-r border-white/5 p-6">
-        <div class="space-y-8">
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Foundation</p>
-                <div class="flex flex-col gap-1">
-                    <a href="introduction.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Introduction</a>
-                    <a href="constitution.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Project Constitution</a>
-                </div>
-            </div>
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Lifecycle</p>
-                <div class="flex flex-col gap-1">
-                    <a href="lifecycle.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">SDD Tactical Lifecycle</a>
-                    <a href="commands.html" class="sidebar-link active block px-4 py-2 rounded-lg text-sm font-bold transition-all">Slash Commands</a>
-                </div>
-            </div>
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Advanced</p>
-                <div class="flex flex-col gap-1">
-                    <a href="deployment.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Multi-Org Promotion</a>
-                </div>
-            </div>
-        </div>
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden md:hidden"></div>
+    <aside id="sidebar" class="flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] overflow-y-auto w-64 border-r border-slate-800/50 bg-[#0f131d] z-40 transition-transform duration-300 -translate-x-full md:translate-x-0">
+        <nav class="mt-4 flex flex-col">
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="introduction.html">
+                <span class="material-symbols-outlined text-sm">info</span>
+                <span>Introduction</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="constitution.html">
+                <span class="material-symbols-outlined text-sm">gavel</span>
+                <span>Constitution</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="lifecycle.html">
+                <span class="material-symbols-outlined text-sm">api</span>
+                <span>SDD Lifecycle</span>
+            </a>
+            <a class="flex items-center gap-3 bg-cyan-400/10 text-cyan-400 border-r-2 border-cyan-400 px-4 py-3 font-bold font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="commands.html">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                <span>Slash Commands</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="deployment.html">
+                <span class="material-symbols-outlined text-sm">rocket_launch</span>
+                <span>Deployment</span>
+            </a>
+        </nav>
     </aside>
 
     <!-- Main Content -->
-    <main class="w-full md:pl-72 flex-1 p-6 md:p-12 max-w-5xl mx-auto">
-        <article class="prose prose-invert prose-cyan max-w-none">
-            <h1 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Slash Commands</h1>
-            <p class="text-xl text-slate-400 mb-12">Automate the entire Salesforce SDLC with persona-driven commands.</p>
+    <main class="md:ml-64 flex-1 p-6 md:p-12 lg:p-20 overflow-x-hidden">
+        <header class="mb-16">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary-fixed-dim to-primary-container leading-tight">
+                Slash Commands
+            </h1>
+            <p class="text-base md:text-xl text-slate-400 font-bold uppercase tracking-widest leading-relaxed max-w-2xl">
+                The Complete SFSpeckit Command Directory for Spec-Kit.
+            </p>
+        </header>
 
-            <div class="overflow-x-auto rounded-2xl border border-white/5 bg-surface-container-low">
-                <table class="w-full text-left border-collapse">
-                    <thead class="bg-surface-container-high border-b border-white/5 font-bold">
-                        <tr>
-                            <th class="p-6 text-xs uppercase tracking-widest text-slate-500">Command</th>
-                            <th class="p-6 text-xs uppercase tracking-widest text-slate-500">Who</th>
-                            <th class="p-6 text-xs uppercase tracking-widest text-slate-500">Purpose</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-white/5">
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.constitution</td>
-                            <td class="p-6"><span class="persona-badge badge-tpo">TPO</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Establish project principles and environmental discovery.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.specify</td>
-                            <td class="p-6"><span class="persona-badge badge-tpo">TPO</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Create functional feature specifications.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.clarify</td>
-                            <td class="p-6"><span class="persona-badge badge-arch">Arch</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Deep gap analysis and drift audit.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.plan</td>
-                            <td class="p-6"><span class="persona-badge badge-arch">Arch</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Technical blueprint and deployment order.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.stories</td>
-                            <td class="p-6"><span class="persona-badge badge-arch">Arch</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Generate Jira-ready developer stories.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.implement</td>
-                            <td class="p-6"><span class="persona-badge badge-dev">Dev</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Build story with <strong>Auto-Heal</strong> loop.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.review</td>
-                            <td class="p-6"><span class="persona-badge badge-tpo">TPO</span><span class="persona-badge badge-arch ml-1">Arch</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Human gate for story dependency alignment.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.verify</td>
-                            <td class="p-6"><span class="persona-badge badge-dev">Dev</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Generate formal Verification Evidence.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.pr</td>
-                            <td class="p-6"><span class="persona-badge badge-dev">Dev</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Prepare PR summary and security scans.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.qa</td>
-                            <td class="p-6"><span class="persona-badge badge-qa">QA</span></td>
-                            <td class="p-6 text-slate-400 text-sm">UI validation and persona coverage.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.uat</td>
-                            <td class="p-6"><span class="persona-badge badge-bpo">BPO</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Business UAT scripts and sign-offs.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.score</td>
-                            <td class="p-6"><span class="persona-badge badge-qa">QA</span><span class="persona-badge badge-arch ml-1">Arch</span></td>
-                            <td class="p-6 text-slate-400 text-sm">555-point health dashboard monitor.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.deploy</td>
-                            <td class="p-6"><span class="persona-badge badge-arch">Arch</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Multi-org promotion logic.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.change</td>
-                            <td class="p-6"><span class="persona-badge badge-tpo">TPO</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Mid-sprint requirement change impact analysis.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.hotfix</td>
-                            <td class="p-6"><span class="persona-badge badge-dev">Dev</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Emergency production patch workflow.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.regression</td>
-                            <td class="p-6"><span class="persona-badge badge-qa">QA</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Full regression testing prior to release.</td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-mono text-cyan-400 text-sm">/speckit.sf.release-notes</td>
-                            <td class="p-6"><span class="persona-badge badge-tpo">TPO</span></td>
-                            <td class="p-6 text-slate-400 text-sm">Automated delivery summary generation.</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <!-- SPEC -->
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">TPO</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 1</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.constitution</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Establish project principles with evidence-based org discovery. Scans metadata maturity and environmental constraints.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Start of Project</div>
             </div>
-        </article>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">TPO</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 1</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.specify</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Create functional feature specifications. Translates business needs into structured instructions for the AI.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Requirement Gathering</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Arch</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 1</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.clarify</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Deep gap analysis and drift audit. Identifies manual org changes and multi-team conflicts before planning.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Before Planning</div>
+            </div>
+
+            <!-- PLAN -->
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Arch</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 2</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.plan</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Technical blueprint and deployment order. Generates architectural structures based on the Spec.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: System Design</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Arch</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 2</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.stories</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Break plan into Jira-ready developer stories with detailed requirements and effort estimations.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: After Planning</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Arch</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Review</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.review</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">TPO and Architect review of generated story files before project tracking tool creation.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Quality Gate</div>
+            </div>
+
+            <!-- BUILD -->
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Dev</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 3</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.implement</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Build story with autonomous Auto-Heal loops. Fixes lints and test failures automatically.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Development</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Dev</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 3</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.verify</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Generate formal Verification Evidence documents required for PR approval gate.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Pre-Submittal</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Dev</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 3</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.pr</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Prepare automated PR summary using Evidence data for human and architect review.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Submission</div>
+            </div>
+
+            <!-- TEST -->
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">QA</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 4</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.qa</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Multi-persona UI validation and persona coverage analysis. Ensures security matrices are met.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Feature Testing</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">BPO</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 4</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.uat</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Generate and manage Business UAT scripts and human sign-offs for developer stories.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Business Validation</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">QA</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 4</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.regression</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Full feature regression before release. Ensures no breaking changes were introduced.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Release Prep</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Arch</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Health</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.score</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">555-point real-time project health dashboard across all stories in a feature.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Global Monitoring</div>
+            </div>
+
+            <!-- DEPLOY -->
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Arch</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 5</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.deploy</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Multi-org environment promotion logic (Dev -> QA -> UAT -> Prod).</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Promotion</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">TPO</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Mid-Sprint</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.change</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Impact analysis for mid-sprint requirement changes. Updates Specs and Plans.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Scope Change</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Dev</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Hotfix</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.hotfix</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Emergency production bug fix workflow. Bypasses standard SDD cycle.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Emergency</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">TPO</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Release</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/speckit.sf.release-notes</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Automatically aggregate feature delivery summary for business sign-off.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Delivery</div>
+            </div>
+        </div>
     </main>
 </div>
 
-<!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="fixed inset-0 z-[60] bg-surface/95 backdrop-blur-2xl hidden md:hidden">
-    <div class="flex flex-col items-center justify-center h-full gap-8 p-6">
-        <button id="mobile-menu-close" class="absolute top-6 right-6 text-slate-400 hover:text-white">
-            <span class="material-symbols-outlined text-3xl">close</span>
-        </button>
-        <div class="flex flex-col gap-4 text-center items-center">
-            <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Foundation</p>
-            <a href="introduction.html" class="text-2xl font-black text-slate-400">Introduction</a>
-            <a href="constitution.html" class="text-2xl font-black text-slate-400">Constitution</a>
-            <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mt-4 mb-2">Lifecycle</p>
-            <a href="lifecycle.html" class="text-2xl font-black text-slate-400">Tactical Lifecycle</a>
-            <a href="commands.html" class="text-2xl font-black text-primary">Slash Commands</a>
+<!-- Footer -->
+<footer class="w-full border-t border-white/5 bg-slate-950 p-6 md:p-12 text-on-surface">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-8">
+        <div class="hidden md:block"></div>
+        <div class="flex justify-center gap-6 font-['Space_Grotesk'] text-[10px] tracking-widest font-bold uppercase text-slate-600">
+            <a class="hover:text-cyan-400 transition-colors" href="index.html">Home</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://github.com/ysumanth06/spec-kit-sf">GitHub</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://www.linkedin.com/in/ysumanth/">LinkedIn</a>
+        </div>
+        <div class="text-center md:text-right">
+            <p class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] text-cyan-400 font-bold uppercase mb-2">SFSpeckit Framework</p>
+            <p class="text-[9px] text-slate-500 uppercase tracking-widest font-bold font-['Inter'] hover:text-slate-400 transition-colors">© 2026 Spec-Driven Development</p>
         </div>
     </div>
-</div>
+</footer>
 
 <script>
-    const toggle = document.getElementById('mobile-menu-toggle');
-    const close = document.getElementById('mobile-menu-close');
-    const menu = document.getElementById('mobile-menu');
-
+    const toggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
     toggle.addEventListener('click', () => {
-        menu.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
+        sidebar.classList.toggle('-translate-x-full');
+        backdrop.classList.toggle('hidden');
+        document.body.style.overflow = sidebar.classList.contains('-translate-x-full') ? '' : 'hidden';
     });
-
-    close.addEventListener('click', () => {
-        menu.classList.add('hidden');
+    backdrop.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
         document.body.style.overflow = '';
     });
 </script>

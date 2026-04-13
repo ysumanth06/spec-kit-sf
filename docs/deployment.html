@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Multi-Org Promotion | SFSpeckit Documentation</title>
+    <title>Deployment | SFSpeckit</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Space+Grotesk:wght@400;500;600&amp;family=Source+Code+Pro&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="assets/logo.png"/>
     <script id="tailwind-config">
@@ -74,158 +74,227 @@
                         "label": ["Space Grotesk"]
                     }
                 },
-            }
+            },
         }
     </script>
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .sidebar-link.active {
-            background-color: rgba(0, 229, 255, 0.1);
-            color: #00e5ff;
-            border-right: 2px solid #00e5ff;
-        }
-    </style>
 </head>
-<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
-
-<!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center h-16 px-6 md:px-12 shadow-2xl">
-    <div class="text-xl font-bold tracking-tighter text-slate-100 font-headline">
-        <a href="index.html" class="flex items-center gap-2">
-            <img alt="SFSpeckit Logo" class="w-8 h-8 object-contain" src="assets/logo.png"/>
-            <span>SFSpeckit</span>
-        </a>
-    </div>
-    <div class="hidden md:flex items-center gap-8 font-bold text-sm text-slate-400">
-        <a class="text-slate-100 transition-colors" href="introduction.html">Documentation</a>
-        <a class="hover:text-slate-100 transition-colors" href="https://github.com/ysumanth06/spec-kit-sf" target="_blank">GitHub</a>
-    </div>
-    <button id="mobile-menu-toggle" class="md:hidden text-primary p-2 hover:bg-white/5 rounded-lg transition-colors">
-        <span class="material-symbols-outlined">menu</span>
-    </button>
-</nav>
-
-<div class="flex pt-16 min-h-screen">
-    <!-- Sidebar -->
-    <aside class="hidden md:block w-72 fixed left-0 top-16 bottom-0 overflow-y-auto bg-surface-container-low border-r border-white/5 p-6">
-        <div class="space-y-8">
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Foundation</p>
-                <div class="flex flex-col gap-1">
-                    <a href="introduction.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Introduction</a>
-                    <a href="constitution.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Project Constitution</a>
-                </div>
-            </div>
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Lifecycle</p>
-                <div class="flex flex-col gap-1">
-                    <a href="lifecycle.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">SDD Tactical Lifecycle</a>
-                    <a href="commands.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Slash Commands</a>
-                </div>
-            </div>
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Advanced</p>
-                <div class="flex flex-col gap-1">
-                    <a href="deployment.html" class="sidebar-link active block px-4 py-2 rounded-lg text-sm font-bold transition-all">Multi-Org Promotion</a>
-                </div>
+<body class="bg-background text-on-surface min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar (Responsive Pattern) -->
+<header class="fixed top-0 w-full z-50 bg-[#0f131d]/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,229,255,0.05)] border-b border-white/5">
+    <div class="flex items-center justify-between px-6 md:px-12 py-4 w-full">
+        <div class="flex items-center gap-4">
+            <button id="sidebar-toggle" class="md:hidden text-cyan-400 p-2 hover:bg-white/5 rounded-lg transition-colors">
+                <span class="material-symbols-outlined font-bold">menu</span>
+            </button>
+            <a href="index.html" class="flex items-center gap-4">
+                <img alt="SFSpeckit Logo" class="w-8 h-8" src="assets/logo.png"/>
+                <span class="text-xl md:text-2xl font-black tracking-tighter text-cyan-400 font-headline uppercase">SFSpeckit</span>
+            </a>
+            <div class="hidden lg:flex gap-6 items-center ml-4 font-bold text-sm text-slate-400">
+                <a class="text-cyan-400 border-b-2 border-cyan-400 pb-1" href="introduction.html">Docs</a>
+                <a class="hover:text-slate-200" href="https://github.com/ysumanth06/spec-kit-sf" target="_blank">GitHub</a>
             </div>
         </div>
+        <a href="commands.html" class="bg-primary-container text-on-primary text-xs md:text-sm font-bold px-4 md:px-6 py-2 rounded-lg shadow-xl shadow-cyan-400/20">Get Started</a>
+    </div>
+</header>
+
+<div class="flex min-h-screen pt-16">
+    <!-- Sidebar -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden md:hidden"></div>
+    <aside id="sidebar" class="flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] overflow-y-auto w-64 border-r border-slate-800/50 bg-[#0f131d] z-40 transition-transform duration-300 -translate-x-full md:translate-x-0">
+        <nav class="mt-4 flex flex-col px-2 py-4">
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="introduction.html">
+                <span class="material-symbols-outlined">info</span>
+                <span>Introduction</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="commands.html">
+                <span class="material-symbols-outlined">terminal</span>
+                <span>Slash Commands</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="constitution.html">
+                <span class="material-symbols-outlined">gavel</span>
+                <span>Constitution</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="lifecycle.html">
+                <span class="material-symbols-outlined">schema</span>
+                <span>SDD Lifecycle</span>
+            </a>
+            <a class="flex items-center gap-3 bg-cyan-400/10 text-cyan-400 border-r-2 border-cyan-400 px-4 py-3 font-bold font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="deployment.html">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+                <span>Deployment</span>
+            </a>
+        </nav>
     </aside>
 
-    <!-- Main Content -->
-    <main class="w-full md:pl-72 flex-1 p-6 md:p-12 max-w-5xl mx-auto">
-        <article class="prose prose-invert prose-cyan max-w-none">
-            <h1 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Multi-Org Promotion</h1>
-            <p class="text-xl text-slate-400 mb-12">Move code with evidence, not just enthusiasm. Automate promotion across complex Salesforce environments.</p>
+    <main class="md:ml-64 flex-1 p-6 md:p-12 lg:p-20 overflow-x-hidden">
+        <header class="mb-16">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white leading-tight">Git Strategy</h1>
+            <p class="text-slate-400 font-bold uppercase tracking-widest text-sm md:text-lg">Enterprise Workflow for Multi-Member Teams.</p>
+        </header>
 
-            <div class="relative bg-surface-container-low rounded-3xl border border-white/5 p-8 mb-12 overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
-                <h3 class="flex items-center gap-3 text-white font-bold mb-6">
-                    <span class="material-symbols-outlined text-primary">rocket_launch</span>
-                    Environment Promotion Logic
-                </h3>
-                <div class="space-y-6">
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-high border border-white/5 flex items-center justify-center text-[10px] font-black">1</div>
-                        <p class="text-sm text-slate-400 leading-relaxed mb-0"><strong>Dev → QA</strong>: Triggered by PR merge. Automatically runs all Apex and LWC tests in the QA sandbox before final schema synchronization.</p>
+        <!-- Branching Model -->
+        <section class="mb-24">
+            <h2 class="text-2xl font-headline font-bold mb-8 flex items-center gap-4 text-white">
+                The Branching Model
+                <span class="h-px flex-1 bg-white/5"></span>
+            </h2>
+            <div class="bg-surface-container-low p-8 rounded-3xl border border-white/5 font-mono text-sm leading-relaxed overflow-x-auto">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-primary-container font-black">main</span>
+                    <span class="text-slate-500">------------------------------------[Production Stable]</span>
+                </div>
+                <div class="flex items-center gap-4 mb-4 ml-8 border-l border-white/10 pl-4">
+                    <span class="text-cyan-400 font-black">feature/ABC-123</span>
+                    <span class="text-slate-500">--------------------[Feature Release Branch]</span>
+                </div>
+                <div class="flex flex-col gap-2 ml-20 border-l border-white/10 pl-4">
+                    <div class="flex items-center gap-4">
+                        <span class="text-slate-300">story/ABC-123-ui</span>
+                        <span class="text-slate-600">----[Developer Branch]</span>
                     </div>
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-high border border-white/5 flex items-center justify-center text-[10px] font-black">2</div>
-                        <p class="text-sm text-slate-400 leading-relaxed mb-0"><strong>QA → UAT</strong>: Requires a "Verified" state in the project record. SFSpeckit validates that all stories have associated Verification Evidence documents before deployment.</p>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-high border border-white/5 flex items-center justify-center text-[10px] font-black">3</div>
-                        <p class="text-sm text-slate-400 leading-relaxed mb-0"><strong>UAT → PROD</strong>: The final gate. Requires BPO sign-off (tracked via <code>/speckit.sf.uat</code>) and passing <code>/speckit.sf.regression</code> tests.</p>
+                    <div class="flex items-center gap-4">
+                        <span class="text-slate-300">story/ABC-123-logic</span>
+                        <span class="text-slate-600">-[Developer Branch]</span>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <h2 class="text-2xl font-bold mb-8">Deployment Command</h2>
-            <div class="p-6 bg-surface-container-low rounded-2xl border border-white/5 font-mono text-cyan-400 text-sm mb-12">
-                /speckit.sf.deploy --target [alias] --dry-run
+        <!-- The Committer Lifecycle -->
+        <section class="mb-24">
+            <h2 class="text-2xl font-headline font-bold mb-8 flex items-center gap-4 text-white">
+                The Committer Lifecycle
+                <span class="h-px flex-1 bg-white/5"></span>
+            </h2>
+            <div class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center bg-surface-container-low p-6 rounded-2xl border border-white/5">
+                    <div class="text-primary font-bold text-xs uppercase tracking-widest">1. Discovery</div>
+                    <div class="text-white font-bold">TPO commits Spec</div>
+                    <div class="text-slate-400 text-sm">Functional requirements committed to the <code>specs/</code> directory.</div>
+                    <div class="text-slate-500 font-mono text-[10px]">/speckit.sf.specify</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center bg-surface-container-low p-6 rounded-2xl border border-white/5">
+                    <div class="text-primary font-bold text-xs uppercase tracking-widest">2. Validation</div>
+                    <div class="text-white font-bold">Arch commits Plan</div>
+                    <div class="text-slate-400 text-sm">Technical blueprint and drift audit results added to the feature folder.</div>
+                    <div class="text-slate-500 font-mono text-[10px]">/speckit.sf.plan</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center bg-surface-container-low p-6 rounded-2xl border border-white/5">
+                    <div class="text-primary font-bold text-xs uppercase tracking-widest">3. Scaffolding</div>
+                    <div class="text-white font-bold">Lead Dev commits Story 00</div>
+                    <div class="text-slate-400 text-sm">Mother Story creates the "Shell" (Metadata + Method Headers) to unblock the team.</div>
+                    <div class="text-slate-500 font-mono text-[10px]">/speckit.sf.implement</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center bg-surface-container-low p-6 rounded-2xl border border-white/5">
+                    <div class="text-primary font-bold text-xs uppercase tracking-widest">4. Parallel Dev</div>
+                    <div class="text-white font-bold">Devs commit Story PRs</div>
+                    <div class="text-slate-400 text-sm">Individual story branches are built and PR'd into the feature branch with evidence.</div>
+                    <div class="text-slate-500 font-mono text-[10px]">/speckit.sf.verify</div>
+                </div>
             </div>
+        </section>
 
-            <h2 class="text-2xl font-bold mb-8">Automated Verification Evidence</h2>
-            <p class="text-slate-400 mb-8">Deployment in SFSpeckit is "Evidence-Based." The engine generates a formal document containing:</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-                <ul class="list-none p-0 m-0 space-y-3">
-                    <li class="flex items-center gap-3 text-sm text-slate-300">
-                        <span class="material-symbols-outlined text-primary text-base">task_alt</span>
-                        Apex Test Results (100% Pass)
-                    </li>
-                    <li class="flex items-center gap-3 text-sm text-slate-300">
-                        <span class="material-symbols-outlined text-primary text-base">task_alt</span>
-                        LWC Jest Test Coverage
-                    </li>
-                </ul>
-                <ul class="list-none p-0 m-0 space-y-3">
-                    <li class="flex items-center gap-3 text-sm text-slate-300">
-                        <span class="material-symbols-outlined text-primary text-base">task_alt</span>
-                        PMD 7 Security Scan Reports
-                    </li>
-                    <li class="flex items-center gap-3 text-sm text-slate-300">
-                        <span class="material-symbols-outlined text-primary text-base">task_alt</span>
-                        Environmental Drift Audit
-                    </li>
-                </ul>
+        <!-- Mother Story Concept -->
+        <section class="mb-24 bg-surface-container-lowest p-8 md:p-12 rounded-3xl border border-white/5 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-10">
+                <span class="material-symbols-outlined text-[120px]">hub</span>
             </div>
-        </article>
+            <div class="relative z-10">
+                <h2 class="text-3xl font-black text-white mb-6">The "Mother Story" (Story 00)</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <p class="text-slate-300 leading-relaxed font-medium">Critical for multi-member teams. The Mother Story defines the contract between developers before logic is written.</p>
+                        <ul class="space-y-4">
+                            <li class="flex gap-4">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span class="text-sm text-slate-400"><strong class="text-slate-200">Metadata Layer:</strong> Deployment of Objects, Fields, and Permissions.</span>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span class="text-sm text-slate-400"><strong class="text-slate-200">Contract Layer:</strong> Class headers and empty LWC skeletons.</span>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span class="text-sm text-slate-400"><strong class="text-slate-200">Dependency Check:</strong> Ensures all story branches can compile immediately.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-black/40 rounded-2xl border border-white/5 p-6 font-mono text-xs">
+                        <div class="text-slate-500 mb-4">// Story 00: The Mother Story Scaffolding</div>
+                        <div class="text-primary">implement(00-scaffold-shell) {</div>
+                        <div class="text-slate-400 pl-4">deploy_metadata([Objects, Fields, PS]);</div>
+                        <div class="text-slate-400 pl-4">create_class_headers(["Service", "Selector"]);</div>
+                        <div class="text-slate-400 pl-4">mark_complete_unblock_team();</div>
+                        <div class="text-primary">}</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roles & Responsibilities -->
+        <section class="mb-24">
+            <h2 class="text-3xl font-black text-white mb-8">Who Does What?</h2>
+            <div class="overflow-hidden rounded-2xl border border-white/5 bg-surface-container-low">
+                <table class="w-full text-left">
+                    <thead class="bg-white/5 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                        <tr>
+                            <th class="px-6 py-4">Role</th>
+                            <th class="px-6 py-4">Responsibility</th>
+                            <th class="px-6 py-4">Key Command</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-sm text-slate-300">
+                        <tr class="hover:bg-white/10 transition-colors">
+                            <td class="px-6 py-4 font-bold text-white">Developer</td>
+                            <td class="px-6 py-4">Atomic implementation & Verification.</td>
+                            <td class="px-6 py-4 font-mono text-xs text-primary">/speckit.sf.implement</td>
+                        </tr>
+                        <tr class="hover:bg-white/10 transition-colors">
+                            <td class="px-6 py-4 font-bold text-white">Architect</td>
+                            <td class="px-6 py-4">Technical Blueprint & Promotion Logic.</td>
+                            <td class="px-6 py-4 font-mono text-xs text-primary">/speckit.sf.deploy</td>
+                        </tr>
+                        <tr class="hover:bg-white/10 transition-colors">
+                            <td class="px-6 py-4 font-bold text-white">QA / TPO</td>
+                            <td class="px-6 py-4">BPO Sign-off & Regression Testing.</td>
+                            <td class="px-6 py-4 font-mono text-xs text-primary">/speckit.sf.qa</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
 </div>
 
-<!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="fixed inset-0 z-[60] bg-surface/95 backdrop-blur-2xl hidden md:hidden">
-    <div class="flex flex-col items-center justify-center h-full gap-8 p-6">
-        <button id="mobile-menu-close" class="absolute top-6 right-6 text-slate-400 hover:text-white">
-            <span class="material-symbols-outlined text-3xl">close</span>
-        </button>
-        <div class="flex flex-col gap-4 text-center items-center">
-            <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Foundation</p>
-            <a href="introduction.html" class="text-2xl font-black text-slate-400">Introduction</a>
-            <a href="constitution.html" class="text-2xl font-black text-slate-400">Constitution</a>
-            <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mt-4 mb-2">Lifecycle</p>
-            <a href="lifecycle.html" class="text-2xl font-black text-slate-400">Tactical Lifecycle</a>
-            <a href="commands.html" class="text-2xl font-black text-slate-400">Slash Commands</a>
-            <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mt-4 mb-2">Advanced</p>
-            <a href="deployment.html" class="text-2xl font-black text-primary">Multi-Org Promotion</a>
+<!-- Footer -->
+<footer class="w-full border-t border-white/5 bg-slate-950 p-6 md:p-12 text-on-surface">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-8">
+        <div class="hidden md:block"></div>
+        <div class="flex justify-center gap-6 font-['Space_Grotesk'] text-[10px] tracking-widest font-bold uppercase text-slate-600">
+            <a class="hover:text-cyan-400 transition-colors" href="index.html">Home</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://github.com/ysumanth06/spec-kit-sf">GitHub</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://www.linkedin.com/in/ysumanth/">LinkedIn</a>
+        </div>
+        <div class="text-center md:text-right">
+            <p class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] text-cyan-400 font-bold uppercase mb-2">SFSpeckit Framework</p>
+            <p class="text-[9px] text-slate-500 uppercase tracking-widest font-bold font-['Inter'] hover:text-slate-400 transition-colors">© 2026 Spec-Driven Development</p>
         </div>
     </div>
-</div>
+</footer>
 
 <script>
-    const toggle = document.getElementById('mobile-menu-toggle');
-    const close = document.getElementById('mobile-menu-close');
-    const menu = document.getElementById('mobile-menu');
-
+    const toggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
     toggle.addEventListener('click', () => {
-        menu.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
+        sidebar.classList.toggle('-translate-x-full');
+        backdrop.classList.toggle('hidden');
+        document.body.style.overflow = sidebar.classList.contains('-translate-x-full') ? '' : 'hidden';
     });
-
-    close.addEventListener('click', () => {
-        menu.classList.add('hidden');
+    backdrop.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
         document.body.style.overflow = '';
     });
 </script>

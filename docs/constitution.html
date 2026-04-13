@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Project Constitution | SFSpeckit Documentation</title>
+    <title>Constitution | SFSpeckit</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Space+Grotesk:wght@400;500;600&amp;family=Source+Code+Pro&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="assets/logo.png"/>
     <script id="tailwind-config">
@@ -74,153 +74,212 @@
                         "label": ["Space Grotesk"]
                     }
                 },
-            }
+            },
         }
     </script>
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .sidebar-link.active {
-            background-color: rgba(0, 229, 255, 0.1);
-            color: #00e5ff;
-            border-right: 2px solid #00e5ff;
-        }
-    </style>
 </head>
-<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
-
-<!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center h-16 px-6 md:px-12 shadow-2xl">
-    <div class="text-xl font-bold tracking-tighter text-slate-100 font-headline">
-        <a href="index.html" class="flex items-center gap-2">
-            <img alt="SFSpeckit Logo" class="w-8 h-8 object-contain" src="assets/logo.png"/>
-            <span>SFSpeckit</span>
-        </a>
-    </div>
-    <div class="hidden md:flex items-center gap-8 font-bold text-sm text-slate-400">
-        <a class="text-slate-100 transition-colors" href="introduction.html">Documentation</a>
-        <a class="hover:text-slate-100 transition-colors" href="https://github.com/ysumanth06/spec-kit-sf" target="_blank">GitHub</a>
-    </div>
-    <button id="mobile-menu-toggle" class="md:hidden text-primary p-2 hover:bg-white/5 rounded-lg transition-colors">
-        <span class="material-symbols-outlined">menu</span>
-    </button>
-</nav>
-
-<div class="flex pt-16 min-h-screen">
-    <!-- Sidebar -->
-    <aside class="hidden md:block w-72 fixed left-0 top-16 bottom-0 overflow-y-auto bg-surface-container-low border-r border-white/5 p-6">
-        <div class="space-y-8">
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Foundation</p>
-                <div class="flex flex-col gap-1">
-                    <a href="introduction.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Introduction</a>
-                    <a href="constitution.html" class="sidebar-link active block px-4 py-2 rounded-lg text-sm font-bold transition-all">Project Constitution</a>
-                </div>
-            </div>
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Lifecycle</p>
-                <div class="flex flex-col gap-1">
-                    <a href="lifecycle.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">SDD Tactical Lifecycle</a>
-                    <a href="commands.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Slash Commands</a>
-                </div>
-            </div>
-            <div>
-                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Advanced</p>
-                <div class="flex flex-col gap-1">
-                    <a href="deployment.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Multi-Org Promotion</a>
-                </div>
+<body class="bg-background text-on-surface min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar (Responsive) -->
+<header class="fixed top-0 w-full z-50 bg-[#0f131d]/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,229,255,0.05)] border-b border-white/5">
+    <div class="flex items-center justify-between px-6 md:px-12 py-4 w-full">
+        <div class="flex items-center gap-4">
+            <button id="sidebar-toggle" class="md:hidden text-cyan-400 p-2 hover:bg-white/5 rounded-lg transition-colors">
+                <span class="material-symbols-outlined font-bold">menu</span>
+            </button>
+            <a href="index.html" class="flex items-center gap-4">
+                <img alt="SFSpeckit Logo" class="w-8 h-8" src="assets/logo.png"/>
+                <span class="text-xl md:text-2xl font-black tracking-tighter text-cyan-400 font-headline uppercase">SFSpeckit</span>
+            </a>
+            <div class="hidden lg:flex gap-6 items-center ml-4 font-bold text-sm text-slate-400">
+                <a class="text-cyan-400 border-b-2 border-cyan-400 pb-1" href="introduction.html">Docs</a>
+                <a class="hover:text-slate-200" href="https://github.com/ysumanth06/spec-kit-sf" target="_blank">GitHub</a>
             </div>
         </div>
+        <a href="commands.html" class="bg-primary-container text-on-primary text-xs md:text-sm font-bold px-4 md:px-6 py-2 rounded-lg shadow-xl shadow-cyan-400/20">Get Started</a>
+    </div>
+</header>
+
+<div class="flex min-h-screen pt-16">
+    <!-- Sidebar -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden md:hidden"></div>
+    <aside id="sidebar" class="flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] overflow-y-auto w-64 border-r border-slate-800/50 bg-[#0f131d] z-40 transition-transform duration-300 -translate-x-full md:translate-x-0">
+        <nav class="flex flex-col gap-1 px-2 py-4">
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="introduction.html">
+                <span class="material-symbols-outlined">info</span>
+                <span>Introduction</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="commands.html">
+                <span class="material-symbols-outlined">terminal</span>
+                <span>Slash Commands</span>
+            </a>
+            <a class="flex items-center gap-3 bg-cyan-400/10 text-cyan-400 border-r-2 border-cyan-400 px-4 py-3 font-bold font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="constitution.html">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gavel</span>
+                <span>Constitution</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="lifecycle.html">
+                <span class="material-symbols-outlined">api</span>
+                <span>SDD Lifecycle</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="deployment.html">
+                <span class="material-symbols-outlined">rocket_launch</span>
+                <span>Deployment</span>
+            </a>
+        </nav>
     </aside>
 
-    <!-- Main Content -->
-    <main class="w-full md:pl-72 flex-1 p-6 md:p-12 max-w-5xl mx-auto">
-        <article class="prose prose-invert prose-cyan max-w-none">
-            <h1 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Project Constitution</h1>
-            <p class="text-xl text-slate-400 mb-12">The architectural "North Star" for all Spec-kit automated builds.</p>
+    <main class="md:ml-64 flex-1 p-6 md:p-12 lg:p-20 overflow-x-hidden">
+        <header class="mb-16">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white leading-tight">Project Constitution</h1>
+            <p class="text-slate-400 font-bold uppercase tracking-widest text-sm md:text-lg italic">"The North Star for your Salesforce Project."</p>
+        </header>
 
-            <div class="grid grid-cols-1 gap-6 mb-16">
+        <!-- The 9 Articles -->
+        <section class="mb-24">
+            <h2 class="text-2xl font-headline font-bold mb-8 flex items-center gap-4 text-white">
+                The 9 Salesforce Constitution Articles
+                <span class="h-px flex-1 bg-white/5"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Article I -->
-                <div class="p-8 bg-surface-container rounded-3xl border border-white/5 hover:border-primary/20 transition-all group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center font-bold text-primary">I</div>
-                        <h3 class="text-xl font-bold text-white mb-0">Metadata-First</h3>
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">I</span>
+                        <h3 class="font-bold text-lg text-white">Metadata-First</h3>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-0">Declarative artifacts (Objects, Fields, Layouts) must reside in the Mother Story (Story 00) and be deployed before any coding references exist. This ensures the AI is always building against a verified schema.</p>
+                    <p class="text-sm text-slate-400 font-medium">Objects and Fields must be defined and finalized before any business logic is written.</p>
                 </div>
-
                 <!-- Article II -->
-                <div class="p-8 bg-surface-container rounded-3xl border border-white/5 hover:border-primary/20 transition-all group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center font-bold text-primary">II</div>
-                        <h3 class="text-xl font-bold text-white mb-0">Bulk Awareness</h3>
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">II</span>
+                        <h3 class="font-bold text-lg text-white">Bulk Awareness</h3>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-0">Non-negotiable bulkification. Every service, trigger, and batch job MUST handle 201+ records. Automated tests must include high-volume data scenarios (PNB pattern) to prevent limits drift.</p>
+                    <p class="text-sm text-slate-400 font-medium">Every piece of logic must handle 201+ records by default. No exceptions.</p>
                 </div>
-
                 <!-- Article III -->
-                <div class="p-8 bg-surface-container rounded-3xl border border-white/5 hover:border-primary/20 transition-all group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center font-bold text-primary">III</div>
-                        <h3 class="text-xl font-bold text-white mb-0">Declarative-First</h3>
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">III</span>
+                        <h3 class="font-bold text-lg text-white">Declarative-First</h3>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-0">Logic belongs in Flow unless advanced computation or external integration mandates Apex. The Constitution enforces a "Flow First" evaluation before approving Service-Layer code.</p>
+                    <p class="text-sm text-slate-400 font-medium">If it can be done with Flow, it must be done with Flow. Use Apex ONLY when necessary.</p>
                 </div>
-
                 <!-- Article IV -->
-                <div class="p-8 bg-surface-container rounded-3xl border border-white/5 hover:border-primary/20 transition-all group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center font-bold text-primary">IV</div>
-                        <h3 class="text-xl font-bold text-white mb-0">Absolute Security</h3>
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">IV</span>
+                        <h3 class="font-bold text-lg text-white">Absolute Security</h3>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-0">Secure by Design. All Apex classes must specify <code>with sharing</code> and utilize <code>WITH USER_MODE</code> for DML operations to satisfy architectural security rubric.</p>
+                    <p class="text-sm text-slate-400 font-medium">Mandatory use of <code>with sharing</code> and <code>WITH USER_MODE</code> in all queries.</p>
                 </div>
-
                 <!-- Article V -->
-                <div class="p-8 bg-surface-container rounded-3xl border border-white/5 hover:border-primary/20 transition-all group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center font-bold text-primary">V</div>
-                        <h3 class="text-xl font-bold text-white mb-0">PNB Test Pattern</h3>
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">V</span>
+                        <h3 class="font-bold text-lg text-white">PNB Test Pattern</h3>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-0">Positive, Negative, and Bulk. Every developer story is incomplete without evidence of all three coverage types. This is a hard-gate in the implementation scoring engine.</p>
+                    <p class="text-sm text-slate-400 font-medium">Every feature must have Positive, Negative, and Bulk test scenarios documented.</p>
+                </div>
+                <!-- Article VI -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">VI</span>
+                        <h3 class="font-bold text-lg text-white">Clean Layers</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Strict separation between Service, Selector, and Domain layers.</p>
+                </div>
+                <!-- Article VII -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">VII</span>
+                        <h3 class="font-bold text-lg text-white">Deployment Safety</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Mandatory dry-runs and metadata syncs before any deployment starts.</p>
+                </div>
+                <!-- Article VIII -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">VIII</span>
+                        <h3 class="font-bold text-lg text-white">Platform Context</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Always provide AI with clear architectural context and managed package interactions.</p>
+                </div>
+                <!-- Article IX -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">IX</span>
+                        <h3 class="font-bold text-lg text-white">Modular Logic</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Break complex logic into reusable, testable domain units.</p>
                 </div>
             </div>
-            
-            <p class="text-[10px] font-label font-bold text-slate-500 uppercase tracking-widest text-center mt-8">Refer to README Articles VI-IX for the complete set.</p>
-        </article>
+        </section>
+
+        <!-- Setup Guide -->
+        <section class="mb-24 bg-surface-container-lowest p-8 md:p-12 rounded-3xl border border-white/5">
+            <h2 class="text-3xl font-black text-white mb-6">How to Create Your Constitution</h2>
+            <div class="space-y-8">
+                <div class="flex gap-6">
+                    <div class="w-10 h-10 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-bold shrink-0">1</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Run the Command</h3>
+                        <p class="text-slate-400 mb-4">Open your AI Agent and type the following slash command:</p>
+                        <code class="bg-black/50 text-primary px-4 py-2 rounded-lg font-mono text-sm">/speckit.sf.constitution</code>
+                    </div>
+                </div>
+                <div class="flex gap-6">
+                    <div class="w-10 h-10 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Automated Discovery</h3>
+                        <p class="text-slate-400 mb-4">SFSpeckit will automatically scan your Salesforce Org for:</p>
+                        <ul class="list-disc list-inside text-slate-500 text-sm space-y-2 ml-4">
+                            <li>Installed Packages (CPQ, FSC, etc.)</li>
+                            <li>Integration Endpoints and Named Credentials</li>
+                            <li>Metadata Maturity (Flow vs. Apex posture)</li>
+                            <li>Org Limits and Constraints</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex gap-6">
+                    <div class="w-10 h-10 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-bold shrink-0">3</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Review & Finalize</h3>
+                        <p class="text-slate-400">Review the generated <code>constitution.md</code> in the <code>.specify/memory/</code> directory. This file acts as the "North Star" for all future AI interactions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 </div>
 
-<!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="fixed inset-0 z-[60] bg-surface/95 backdrop-blur-2xl hidden md:hidden">
-    <div class="flex flex-col items-center justify-center h-full gap-8 p-6">
-        <button id="mobile-menu-close" class="absolute top-6 right-6 text-slate-400 hover:text-white">
-            <span class="material-symbols-outlined text-3xl">close</span>
-        </button>
-        <div class="flex flex-col gap-4 text-center items-center">
-            <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Foundation</p>
-            <a href="introduction.html" class="text-2xl font-black text-slate-400">Introduction</a>
-            <a href="constitution.html" class="text-2xl font-black text-primary">Constitution</a>
-            <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mt-4 mb-2">Lifecycle</p>
-            <a href="lifecycle.html" class="text-2xl font-black text-slate-400">Tactical Lifecycle</a>
-            <a href="commands.html" class="text-2xl font-black text-slate-400">Slash Commands</a>
+<!-- Footer -->
+<footer class="w-full border-t border-white/5 bg-slate-950 p-6 md:p-12 text-on-surface">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-8">
+        <div class="hidden md:block"></div>
+        <div class="flex justify-center gap-6 font-['Space_Grotesk'] text-[10px] tracking-widest font-bold uppercase text-slate-600">
+            <a class="hover:text-cyan-400 transition-colors" href="index.html">Home</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://github.com/ysumanth06/spec-kit-sf">GitHub</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://www.linkedin.com/in/ysumanth/">LinkedIn</a>
+        </div>
+        <div class="text-center md:text-right">
+            <p class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] text-cyan-400 font-bold uppercase mb-2">SFSpeckit Framework</p>
+            <p class="text-[9px] text-slate-500 uppercase tracking-widest font-bold font-['Inter'] hover:text-slate-400 transition-colors">© 2026 Spec-Driven Development</p>
         </div>
     </div>
-</div>
+</footer>
 
 <script>
-    const toggle = document.getElementById('mobile-menu-toggle');
-    const close = document.getElementById('mobile-menu-close');
-    const menu = document.getElementById('mobile-menu');
-
+    const toggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
     toggle.addEventListener('click', () => {
-        menu.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
+        sidebar.classList.toggle('-translate-x-full');
+        backdrop.classList.toggle('hidden');
+        document.body.style.overflow = sidebar.classList.contains('-translate-x-full') ? '' : 'hidden';
     });
-
-    close.addEventListener('click', () => {
-        menu.classList.add('hidden');
+    backdrop.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
         document.body.style.overflow = '';
     });
 </script>
