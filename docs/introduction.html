@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Introduction | SFSpeckit Documentation</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Space+Grotesk:wght@400;500;600&amp;family=Source+Code+Pro&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="assets/logo.png"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00e5ff",
+                        "on-primary-container": "#00626e",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#6f5500",
+                        "primary": "#c3f5ff",
+                        "tertiary-container": "#fec931",
+                        "secondary-container": "#3d4759",
+                        "surface-variant": "#313540",
+                        "on-secondary-fixed": "#121c2c",
+                        "inverse-on-surface": "#2c303b",
+                        "inverse-surface": "#dfe2f1",
+                        "surface-container-lowest": "#0a0e18",
+                        "surface-container-highest": "#313540",
+                        "on-secondary": "#273141",
+                        "outline": "#849396",
+                        "surface-tint": "#00daf3",
+                        "primary-fixed-dim": "#00daf3",
+                        "surface-container-high": "#262a35",
+                        "tertiary": "#ffeac0",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "background": "#0f131d",
+                        "surface": "#0f131d",
+                        "secondary-fixed-dim": "#bdc7dc",
+                        "on-primary": "#00363d",
+                        "on-primary-fixed": "#001f24",
+                        "on-tertiary": "#3e2e00",
+                        "outline-variant": "#3b494c",
+                        "secondary-fixed": "#d9e3f9",
+                        "surface-container-low": "#171b26",
+                        "surface-bright": "#353944",
+                        "on-secondary-container": "#abb5cb",
+                        "surface-container": "#1c1f2a",
+                        "tertiary-fixed-dim": "#f3bf26",
+                        "on-surface": "#dfe2f1",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-background": "#dfe2f1",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#bac9cc",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#006875",
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-secondary-fixed-variant": "#3d4759",
+                        "primary-fixed": "#9cf0ff",
+                        "surface-dim": "#0f131d",
+                        "secondary": "#bdc7dc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .code-block {
+            background-color: #0d1117;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            font-family: 'Source Code Pro', monospace;
+            position: relative;
+        }
+        .sidebar-link.active {
+            background-color: rgba(0, 229, 255, 0.1);
+            color: #00e5ff;
+            border-right: 2px solid #00e5ff;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center h-16 px-6 md:px-12 shadow-2xl">
+    <div class="text-xl font-bold tracking-tighter text-slate-100 font-headline">
+        <a href="index.html" class="flex items-center gap-2">
+            <img alt="SFSpeckit Logo" class="w-8 h-8 object-contain" src="assets/logo.png"/>
+            <span>SFSpeckit</span>
+        </a>
+    </div>
+    <div class="hidden md:flex items-center gap-8 font-bold text-sm text-slate-400">
+        <a class="text-slate-100 transition-colors" href="introduction.html">Documentation</a>
+        <a class="hover:text-slate-100 transition-colors" href="https://github.com/ysumanth06/spec-kit-sf" target="_blank">GitHub</a>
+    </div>
+    <button id="mobile-menu-toggle" class="md:hidden text-primary p-2 hover:bg-white/5 rounded-lg transition-colors">
+        <span class="material-symbols-outlined">menu</span>
+    </button>
+</nav>
+
+<div class="flex pt-16 min-h-screen">
+    <!-- Sidebar (Desktop) -->
+    <aside class="hidden md:block w-72 fixed left-0 top-16 bottom-0 overflow-y-auto bg-surface-container-low border-r border-white/5 p-6">
+        <div class="space-y-8">
+            <div>
+                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Foundation</p>
+                <div class="flex flex-col gap-1">
+                    <a href="introduction.html" class="sidebar-link active block px-4 py-2 rounded-lg text-sm font-bold transition-all">Introduction</a>
+                    <a href="constitution.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Project Constitution</a>
+                </div>
+            </div>
+            <div>
+                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Lifecycle</p>
+                <div class="flex flex-col gap-1">
+                    <a href="lifecycle.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">SDD Tactical Lifecycle</a>
+                    <a href="commands.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Slash Commands</a>
+                </div>
+            </div>
+            <div>
+                <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Advanced</p>
+                <div class="flex flex-col gap-1">
+                    <a href="deployment.html" class="sidebar-link block px-4 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white hover:bg-white/5 transition-all">Multi-Org Promotion</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="w-full md:pl-72 flex-1 p-6 md:p-12 max-w-5xl mx-auto">
+        <article class="prose prose-invert prose-cyan max-w-none">
+            <h1 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Introduction</h1>
+            <p class="text-xl text-slate-400 mb-12">Building Salesforce features in the AI era requires more than just chat interaction. It requires <strong>Rigor</strong>.</p>
+
+            <div class="p-8 bg-primary/5 rounded-3xl border border-primary/20 mb-12">
+                <h3 class="flex items-center gap-2 text-primary font-black uppercase text-xs tracking-widest mb-4">
+                    <span class="material-symbols-outlined text-base">emergency</span>
+                    The SDD Strategy
+                </h3>
+                <p class="text-slate-300 font-bold mb-0">
+                    SFSpeckit is a Spec-Driven Development framework that enforces <strong>Requirement > Design > Build</strong> discipline. It eliminates AI hallucinations by locking and gating every phase of the lifecycle.
+                </p>
+            </div>
+
+            <h2 class="text-2xl font-bold mb-6 pt-8 border-t border-white/5">Installation</h2>
+            <p class="text-slate-400 mb-6 font-bold">Step 1: Add the extension to your Spec Kit installation:</p>
+            <div class="code-block group mb-8">
+                <pre class="text-cyan-400 text-xs md:text-sm overflow-x-auto"><code>specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archive/refs/tags/v1.0.0.zip</code></pre>
+            </div>
+
+            <p class="text-slate-400 mb-6 font-bold">Step 2: Initialize the automated environment setup:</p>
+            <div class="code-block group mb-12">
+                <pre class="text-cyan-400 text-xs md:text-sm overflow-x-auto"><code>/speckit.sf.setup</code></pre>
+                <div class="mt-4 p-3 bg-primary/10 rounded-lg border border-primary/20 text-[10px] text-primary">
+                    <span class="font-black uppercase">Auto-Checker:</span> Detects and configures Salesforce CLI, GitHub CLI, and Code Analyzer.
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-bold mb-8">Prerequisites</h2>
+            <div class="overflow-x-auto rounded-2xl border border-white/5 mb-12">
+                <table class="w-full text-left border-collapse bg-surface-container-low">
+                    <thead class="bg-surface-container-high border-b border-white/5 font-bold">
+                        <tr>
+                            <th class="p-4 text-xs uppercase tracking-widest text-slate-500">Tool</th>
+                            <th class="p-4 text-xs uppercase tracking-widest text-slate-500">Version</th>
+                            <th class="p-4 text-xs uppercase tracking-widest text-slate-500">Role</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5">
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-4 font-bold text-sm">Spec Kit</td>
+                            <td class="p-4 text-slate-400 text-xs">≥ 0.4.0</td>
+                            <td class="p-4 text-slate-400 text-xs">Core Automation Engine</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-4 font-bold text-sm">Salesforce CLI</td>
+                            <td class="p-4 text-slate-400 text-xs">≥ 2.0.0</td>
+                            <td class="p-4 text-slate-400 text-xs">Org Operations & Deploy</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-4 font-bold text-sm">SF Code Analyzer</td>
+                            <td class="p-4 text-slate-400 text-xs">≥ 5.0.0</td>
+                            <td class="p-4 text-slate-400 text-xs">Security & Quality Gates</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="text-2xl font-bold mb-8">Cross-IDE Compatibility</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+                <div class="p-6 bg-surface-container rounded-2xl border border-white/5 flex flex-col items-center">
+                    <img src="https://cursor.com/favicon.ico" class="w-8 h-8 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer"/>
+                    <p class="font-bold text-sm mb-1">Cursor</p>
+                    <p class="text-[10px] text-primary font-black uppercase tracking-widest">Full Support</p>
+                </div>
+                <div class="p-6 bg-surface-container rounded-2xl border border-white/5 flex flex-col items-center">
+                    <img src="assets/logo.png" class="w-8 h-8 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer"/>
+                    <p class="font-bold text-sm mb-1">Antigravity</p>
+                    <p class="text-[10px] text-primary font-black uppercase tracking-widest">Optimized</p>
+                </div>
+                <div class="p-6 bg-surface-container rounded-2xl border border-white/5 flex flex-col items-center">
+                    <img src="https://claude.ai/favicon.ico" class="w-8 h-8 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer"/>
+                    <p class="font-bold text-sm mb-1">Claude Code</p>
+                    <p class="text-[10px] text-primary font-black uppercase tracking-widest">Full Support</p>
+                </div>
+            </div>
+        </article>
+    </main>
+</div>
+
+<!-- Mobile Menu Overlay (Shared across pages) -->
+<div id="mobile-menu" class="fixed inset-0 z-[60] bg-surface/95 backdrop-blur-2xl hidden md:hidden">
+    <div class="flex flex-col items-center justify-center h-full gap-8 p-6">
+        <button id="mobile-menu-close" class="absolute top-6 right-6 text-slate-400 hover:text-white">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+        <div class="flex flex-col gap-4 text-center items-center">
+            <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Foundation</p>
+            <a href="introduction.html" class="text-2xl font-black text-primary">Introduction</a>
+            <a href="constitution.html" class="text-2xl font-black text-slate-400">Constitution</a>
+            <p class="text-[10px] font-label font-black text-slate-500 uppercase tracking-[0.2em] mt-4 mb-2">Lifecycle</p>
+            <a href="lifecycle.html" class="text-2xl font-black text-slate-400">Tactical Lifecycle</a>
+            <a href="commands.html" class="text-2xl font-black text-slate-400">Slash Commands</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const close = document.getElementById('mobile-menu-close');
+    const menu = document.getElementById('mobile-menu');
+
+    toggle.addEventListener('click', () => {
+        menu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    });
+
+    close.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        document.body.style.overflow = '';
+    });
+</script>
+</body>
+</html>
