@@ -17,9 +17,17 @@ Constitution → Specify → Clarify → Plan → Stories → Implement → Veri
 **Hybrid AI Architecture:**
 - **Self-Contained**: Works perfectly as a standalone extension with Zero-Dependency.
 - **Smart-Aware**: Automatically checks for existing Salesforce foundational skills (`sf-apex`, `sf-lwc`, `sf-docs`) and uses them as **Optional Accelerators**.
-- **Unified Rubric**: The **555-point quality scoring** in `docs/scoring.md` is the absolute Source of Truth, regardless of what supplemental skills are used.
-- **Auto-heal loop** — AI automatically fixes code that fails scoring gates (up to 3 retries).
-- **Blast radius analysis** — CLI-driven dependency impact detection before any changes.
+- **Unified Rubric**: The **555-point quality scoring** in `docs/scoring.md` is the absolute Source of Truth.
+
+## Key Features & Methodology
+
+*   **Spec-Driven Development (SDD)**: Enforces a rigorous lifecycle (Spec → Plan → Implement) to eliminate AI hallucinations.
+*   **The 9 Constitution Articles**: Architectural guardrails (Bulkification, Metadata-First, Clean Layers) enforced on every build.
+*   **Mother Story (Story 00)**: Parallel development unlocked via functional scaffolding.
+*   **Auto-Heal Engine**: Automated logic and test remediation built into the implementation layer.
+*   **Blast Radius Analysis**: CLI-driven dependency mapping to prevent regressions.
+
+👉 **[Read the Full Feature & Methodology Guide](docs/features.md)**
 
 ## Installation
 
