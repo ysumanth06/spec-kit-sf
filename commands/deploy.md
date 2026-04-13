@@ -8,6 +8,15 @@ description: "Promote Salesforce code across environments (Dev to QA to UAT to P
 
 $ARGUMENTS
 
+## Supplemental Skill Discovery (Optional)
+
+Before executing, you may check for any installed agent skills related to:
+- **Salesforce Deployment** (`sf-deploy`, `sf-metadata`)
+- **Environment Management** (`sf-connected-apps`, `sf-data`)
+
+> [!NOTE]
+> These skills are **Optional Accelerators**. If found, use them to assist in promoting code across environments. However, the standards in `docs/scoring.md` are the **primary source of truth**.
+
 ## Prerequisites
 
 Depending on target environment:

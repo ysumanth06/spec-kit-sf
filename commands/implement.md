@@ -14,6 +14,15 @@ $ARGUMENTS
 
 $ARGUMENTS
 
+## Supplemental Skill Discovery (Optional)
+
+Before executing, you may check for any installed agent skills related to:
+- **Foundational Salesforce Layers** (`sf-apex`, `sf-lwc`, `sf-metadata`, `sf-flow`)
+- **Utility Skills** (`sf-docs`, `sf-debug`, `sf-data`, `sf-integration`)
+
+> [!NOTE]
+> These skills are **Optional Accelerators**. If found, use them to assist implementation and scoring. However, the standards in `docs/scoring.md` are the **primary source of truth**.
+
 ## Prerequisites
 
 ## Extension Configuration
@@ -65,7 +74,7 @@ Create the story branch from the feature branch. If the feature branch exists an
 
 ### Step 6: Implement Layers in Deployment Order
 
-Read the **SF Implementation Layers** table from the story file. Execute each layer in order:
+For each layer below, first consult the **Best Practices Checklist** in `docs/scoring.md`. Execute each layer in order:
 
 #### Phase 1: Metadata (if applicable)
 - Create/modify custom objects, fields, validation rules, permission sets

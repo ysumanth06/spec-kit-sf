@@ -2,10 +2,10 @@
 
 SFSpeckit enforces quality through a **555-point scoring system** across four dimensions.
 
-## The Standalone Evaluator
+## The Standalone Source of Truth
 
 > [!IMPORTANT]
-> This extension uses a **Standalone AI Evaluator** model. It does not rely on external "foundation skills" for scoring. The AI Agent acts as both the developer and the judge, using its internal knowledge of Salesforce architecture and the specific checklists below.
+> This document is the **absolute Source of Truth** for all Salesforce quality gates in this extension. Even if external foundational skills (like `sf-apex`) are used as accelerators, the AI Agent must prioritize the standards and checklists below to ensure enterprise-grade SDLC compliance.
 
 ## Scoring Breakdown
 

@@ -14,10 +14,10 @@ SFSpeckit transforms Salesforce development from ad-hoc coding into a spec-drive
 Constitution → Specify → Clarify → Plan → Stories → Implement → Verify → PR → QA → UAT → Deploy
 ```
 
-**Zero-Dependency AI Architecture:**
-- **standalone**: No external "foundational skills" required.
-- **555-point quality scoring** built directly into the extension's documentation.
-- **AI-Driven Evaluator**: The AI agent uses its internal knowledge + embedded best practices to build and judge code.
+**Hybrid AI Architecture:**
+- **Self-Contained**: Works perfectly as a standalone extension with Zero-Dependency.
+- **Smart-Aware**: Automatically checks for existing Salesforce foundational skills (`sf-apex`, `sf-lwc`, `sf-docs`) and uses them as **Optional Accelerators**.
+- **Unified Rubric**: The **555-point quality scoring** in `docs/scoring.md` is the absolute Source of Truth, regardless of what supplemental skills are used.
 - **Auto-heal loop** — AI automatically fixes code that fails scoring gates (up to 3 retries).
 - **Blast radius analysis** — CLI-driven dependency impact detection before any changes.
 

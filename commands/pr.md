@@ -8,6 +8,15 @@ description: "Prepare a PR with scoring gates and code review checklist."
 
 $ARGUMENTS
 
+## Supplemental Skill Discovery (Optional)
+
+Before executing, you may check for any installed agent skills related to:
+- **Salesforce Quality & Deployment** (`sf-apex`, `sf-lwc`, `sf-testing`, `sf-deploy`)
+- **Metadata Auditing** (`sf-metadata`, `sf-permissions`)
+
+> [!NOTE]
+> These skills are **Optional Accelerators**. If found, use them to assist in verification and scoring. However, the standards in `docs/scoring.md` are the **primary source of truth**.
+
 ## Extension Configuration
 
 Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
@@ -30,6 +39,8 @@ Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
    - **WARNING: Proceeding without the Code Analyzer is a SECURITY RISK.**
 
 ### Step 2: Run All Scoring Gates
+
+Evaluate the implementation using the **Best Practices Checklist** in `docs/scoring.md`.
 
 **Security Scan (Scanner)**:
 - Run: `sf scanner run --target "force-app/" --engine pmd,eslint-lwc`

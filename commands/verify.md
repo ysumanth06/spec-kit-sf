@@ -8,6 +8,15 @@ description: "Generate formal Verification Evidence documents with coverage metr
 
 $ARGUMENTS
 
+## Supplemental Skill Discovery (Optional)
+
+Before executing, you may check for any installed agent skills related to:
+- **Salesforce Verification & Testing** (`sf-testing`, `sf-apex`, `sf-lwc`)
+- **Observability & Logs** (`sf-debug`, `sf-agentforce-observability`)
+
+> [!NOTE]
+> These skills are **Optional Accelerators**. If found, use them to assist in generating verification evidence. However, the standards in `docs/scoring.md` are the **primary source of truth**.
+
 ## Extension Configuration
 
 Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.

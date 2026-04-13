@@ -8,6 +8,15 @@ description: "Create a Salesforce feature spec with object maps and security mod
 
 $ARGUMENTS
 
+## Supplemental Skill Discovery (Optional)
+
+Before executing, you may check for any installed agent skills related to:
+- **Salesforce documentation** — official docs, feature references
+- **Diagramming** — ERD, object relationship visualization
+
+> [!NOTE]
+> These skills are **Optional Accelerators**. If found, use them to assist in defining the feature specification. However, the standards in `docs/scoring.md` are the **primary source of truth**.
+
 ## Prerequisites
 
 - Constitution exists: `.specify/memory/constitution.md` (run `/speckit.sf.constitution` first)

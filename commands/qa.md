@@ -8,6 +8,15 @@ description: "Generate manual test scripts and run automated Apex/Jest tests."
 
 $ARGUMENTS
 
+## Supplemental Skill Discovery (Optional)
+
+Before executing, you may check for any installed agent skills related to:
+- **Salesforce QA & Testing** (`sf-testing`, `sf-apex`, `sf-lwc`)
+- **Persona/Access Auditing** (`sf-permissions`, `sf-data`)
+
+> [!NOTE]
+> These skills are **Optional Accelerators**. If found, use them to assist in generating test scripts and persona coverage. However, the standards in `docs/scoring.md` are the **primary source of truth**.
+
 ## Prerequisites
 
 - Story status is **REVIEW** or higher (code review completed)

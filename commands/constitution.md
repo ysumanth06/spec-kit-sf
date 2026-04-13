@@ -8,6 +8,15 @@ description: "Establish Salesforce project principles with 9 articles and enviro
 
 $ARGUMENTS
 
+## Supplemental Skill Discovery (Optional)
+
+Before executing, you may check for any installed agent skills related to:
+- **Salesforce Governance & Principles** (constitutions, architectural standards)
+- **Environment Discovery** (`sf-metadata`, `sf-data`, `sf-connected-apps`)
+
+> [!NOTE]
+> These skills are **Optional Accelerators**. If found, use them to assist in establishing the project constitution. However, the standards in `docs/scoring.md` are the **primary source of truth**.
+
 ## Prerequisites
 
 - Salesforce DX project initialized (`sfdx-project.json` exists)

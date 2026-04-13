@@ -8,6 +8,15 @@ description: "Generate Jira-ready developer stories with security matrices."
 
 $ARGUMENTS
 
+## Supplemental Skill Discovery (Optional)
+
+Before executing, you may check for any installed agent skills related to:
+- **Metadata/Story Analysis** (`sf-metadata`, `sf-data`)
+- **Developer Workload Estimation** (if specialized skills exist)
+
+> [!NOTE]
+> These skills are **Optional Accelerators**. If found, use them to assist in decomposing features and identifying implementation layers. However, the standards in `docs/scoring.md` are the **primary source of truth**.
+
 ## Prerequisites
 
 - Plan exists: `.specify/specs/NNN-feature-name/plan.md`
@@ -73,7 +82,7 @@ Create `.specify/specs/NNN-feature-name/task_story_NN.md`:
 3. Populate **SF Implementation Layers** table with exact file paths
 4. Populate **Security & Access Matrix** with detailed profile/permset configs
 5. Populate **Dependencies** based on Step 4 analysis
-6. Populate **Scoring Gates** with thresholds from the plan
+6. Populate **Scoring Gates** with thresholds from the plan (mapped to the rubric in `docs/scoring.md`)
 7. Populate **Estimation** table (Human Effort in hours)
 8. Add TPO/Architect guidance in **Developer Notes**
 

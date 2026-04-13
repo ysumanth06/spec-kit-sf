@@ -8,6 +8,15 @@ description: "Create a technical plan with force-app structure and blast radius 
 
 $ARGUMENTS
 
+## Supplemental Skill Discovery (Optional)
+
+Before executing, you may check for any installed agent skills related to:
+- **Metadata/Objects/Relationships** (`sf-metadata`, `sf-data`, `sf-diagram-mermaid`)
+- **Apex/LWC Architectural Patterns** (`sf-apex`, `sf-lwc`)
+
+> [!NOTE]
+> These skills are **Optional Accelerators**. If found, use them to assist in architectural planning and blast radius analysis. However, the standards in `docs/scoring.md` are the **primary source of truth**.
+
 ## Prerequisites
 
 - Spec exists: `.specify/specs/NNN-feature-name/spec.md` (status: Clarified or Draft)
