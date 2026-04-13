@@ -47,6 +47,7 @@ specify extension list
 |------|---------|----------|---------|
 | [Spec Kit](https://github.com/github/spec-kit) | ≥ 0.4.0 | ✅ Yes | Core SDD framework |
 | [Salesforce CLI (`sf`)](https://developer.salesforce.com/tools/salesforcecli) | ≥ 2.0.0 | ✅ Yes | Org operations, deployments, testing |
+| [SF Code Analyzer v5+](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/install-v5.html) | ≥ 5.0.0 | ✅ Yes | Security scans, PMD 7, Quality Gates |
 | Salesforce DX project | — | ✅ Yes | `sfdx-project.json` must exist |
 
 ## Configuration
