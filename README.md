@@ -1,6 +1,8 @@
 # SFSpeckit — Salesforce Spec-Driven Development
 
-> Enterprise-grade Salesforce SDLC extension for [Spec Kit](https://github.com/github/spec-kit). 17 commands covering the full development lifecycle with Zero-Dependency AI Architecture.
+> **Enterprise-Grade Spec-Driven Development (SDD) Framework for Salesforce: AI-Powered, Human-in-the-Loop Engineering.**
+
+Enterprise-grade Salesforce SDLC extension for [Spec Kit](https://github.com/github/spec-kit). 17 commands covering the full development lifecycle with Hybrid AI Architecture.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Spec Kit](https://img.shields.io/badge/spec--kit-extension-purple.svg)](https://github.com/github/spec-kit)
