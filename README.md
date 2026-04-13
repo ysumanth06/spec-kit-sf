@@ -12,13 +12,20 @@
 
 <br/>
 
-SFSpeckit transforms Salesforce delivery into an evidence-based, autonomous engine driven by structured specifications. In the era of AI-agentic coding, jumping directly into implementation is the fastest way to hit context limits, create hallucinations, and accumulate technical debt.
+SFSpeckit transforms Salesforce delivery into an evidence-based, autonomous engine driven by structured specifications.
 
 ---
 
 ## 🏗️ Spec-Driven Development (SDD) for AI
 
-SFSpeckit is built on the philosophy of **Spec-Driven Development (SDD)**. It enforces a rigorous lifecycle that keeps the AI grounded and the human in the loop.
+SFSpeckit is built on the philosophy of **Spec-Driven Development (SDD)**. In the era of AI-agentic coding, jumping directly into implementation is the fastest way to hit context limits, create hallucinations, and accumulate technical debt.
+
+### The SDD Strategy:
+
+`Requirements (Spec) >>> Design (Plan) >>> Implementation (Build) >>> Test >>> Deploy`
+
+> [!IMPORTANT]
+> **Human-in-the-Loop (HITL) Engineering**: SFSpeckit is a Spec-Driven Development framework that enforces human validation and verification at every milestone. This ensures that the AI remains a grounded co-pilot, eliminating hallucinations and context drift through rigorous human sign-offs.
 
 ### The Tactical Lifecycle
 
@@ -51,6 +58,13 @@ graph TD
 3.  **BUILD (Execute)**: Autonomous implementation with **Auto-Heal loops** and human verification.
 4.  **TEST (Validate)**: Multi-persona QA, UAT sign-offs, and multi-org regression testing.
 5.  **DEPLOY (Promote)**: Evidence-based promotion across complex environment landscapes.
+
+### 🧠 Why SDD Framework for Salesforce?
+
+- **🧠 Context Isolation**: By separating planning from building, the AI focuses on one logical layer at a time, drastically reducing hallucinations.
+- **🛡️ Hallucination Guardrails**: Mandatory prerequisites and human-led scoring gates ensure the AI never proceeds on assumptions.
+- **⚡ Zero Drift**: The extension architecture locks architectural best practices (Selector, Domain, Service), preventing logic "drift."
+- **☁️ Salesforce-Native**: Built exclusively for the Salesforce Metadata API and enterprise design patterns.
 
 ---
 
@@ -90,15 +104,15 @@ Parallel development is often blocked by metadata dependencies. SFSpeckit solves
 
 ---
 
-## 🏎️ SFSpeckit vs. Standard "Chat-and-Code"
+## 🛠️ Prerequisites & Dependencies
 
-| Feature | Standard "Chat-and-Code" | SFSpeckit Extension |
-| :--- | :--- | :--- |
-| **Success Rate** | ~60% (Hallucination Risk) | **>95% (Deterministic Architecture)** |
-| **Hallucination Protection** | None (Pure AI Autonomy) | **HITL Verification & Gated Inputs** |
-| **Technical Debt** | High (Inconsistent patterns) | **Zero (Architect-enforced Articles)** |
-| **Logic Drift** | High (Instructions fade) | **None (Locked SDD Lifecycle)** |
-| **Scalability** | Fails at 2+ complex features | **Enterprise-Grade Multi-Team Ready** |
+| Tool | Version | Required | Purpose |
+| :--- | :--- | :--- | :--- |
+| **Spec Kit** | ≥ 0.4.0 | ✅ Yes | Core SDD framework engine. |
+| **Salesforce CLI** | ≥ 2.0.0 | ✅ Yes | Metadata operations and org connectivity. |
+| **SF Code Analyzer** | ≥ 5.0.0 | ✅ Yes | Static analysis (PMD 7) and data-flow analysis. |
+| **GitHub CLI** | ≥ 2.0.0 | ⚠️ Optional | Automated Pull Request creation and reviews. |
+| **DX Project** | — | ✅ Yes | Project must be an initialized Salesforce DX project. |
 
 ---
 
@@ -110,7 +124,7 @@ specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archiv
 ```
 
 ### 2. Automated Setup
-Install all external dependencies (Salesforce CLI, GitHub CLI, and Code Analyzer) automatically:
+Install all external dependencies automatically:
 
 ```bash
 /speckit.sf.setup
@@ -144,7 +158,7 @@ Install all external dependencies (Salesforce CLI, GitHub CLI, and Code Analyzer
 
 ## 📁 Repository Structure
 
-SFSpeckit organizes all SDD artifacts inside the `.specify` directory to maintain a clean project root.
+SFSpeckit organizes all SDD artifacts inside the `.specify` directory:
 
 ```text
 .specify/
@@ -170,7 +184,7 @@ sfdx-project.json                       # Core Salesforce Config
 
 ## 👨‍💻 Built by an Architect
 
-SFSpeckit has been re-architected as a Spec-Kit extension by **Sumanth Yanamala**, a Salesforce Architect, to meet the unique challenges of the Salesforce development lifecycle.
+SFSpeckit has been re-architected as a Spec-Kit extension by **Sumanth Yanamala**, a Salesforce Architect.
 
 Find more about the creator and his work on his **[Personal Website](https://ysumanth06.github.io/LinkedIn-Personal-Website/)**.
 
@@ -178,13 +192,13 @@ Find more about the creator and his work on his **[Personal Website](https://ysu
 
 ## 🌟 Giving Back
 
-This framework is my contribution to the incredible Salesforce community. Throughout my career, the community has been a constant source of support, learning, and inspiration. I am sharing **SFSpeckit** as a way to give back to the platform and the people that have shaped my professional journey.
+This framework is my contribution to the incredible Salesforce community. I am sharing **SFSpeckit** as a way to give back to the platform and the people that have shaped my journey.
 
 ---
 
 ## ❤️ Special Thanks
 
-This project is the result of many months of work, often stretching into late nights and weekends. I want to extend my deepest gratitude to my wife, **Srija**, for her unwavering support, understanding, and patience throughout this journey. This project wouldn't have been possible without her.
+Heartfelt thanks to my wife, **Srija**, for her unwavering support and patience throughout the late nights of building this framework.
 
 ---
 
