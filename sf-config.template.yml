@@ -1,0 +1,39 @@
+# SFSpeckit Extension Configuration
+# ===================================
+# Copy to sf-config.yml and customize for your project.
+# Local overrides: sf-config.local.yml (gitignored)
+# Env overrides: SPECKIT_SF_* variables
+#
+# Config precedence (highest priority last):
+#   1. Extension defaults (extension.yml)
+#   2. Project config (sf-config.yml)
+#   3. Local overrides (sf-config.local.yml)
+#   4. Environment variables (SPECKIT_SF_*)
+
+project:
+  name: "My Salesforce Project"
+  org_aliases:
+    dev: "dev"
+    qa: "qa"
+    uat: "uat"
+    prod: "prod"
+
+scoring:
+  # Minimum passing thresholds (percentage)
+  metadata: 80
+  apex: 80
+  lwc: 80
+  testing: 80
+
+deployment:
+  # Always run dry-run before every deploy
+  always_dry_run: true
+  # Test level for deployments (RunLocalTests, RunSpecifiedTests, RunAllTestsInOrg)
+  test_level: "RunLocalTests"
+
+constitution:
+  # Override default article postures
+  # auto = detect from org scan (flow vs apex ratio)
+  # flow-centric = prioritize Flow for new automation
+  # apex-centric = prioritize Apex (technical debt reduction)
+  article_iii_posture: "auto"

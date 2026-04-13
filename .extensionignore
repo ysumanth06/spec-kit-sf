@@ -1,0 +1,15 @@
+# .extensionignore
+# Excludes files from being copied when users install with `specify extension add`
+
+# Development files
+tests/
+.github/
+.gitignore
+
+# Documentation source (README is kept by default)
+CONTRIBUTING.md
+
+# Build artifacts
+__pycache__/
+*.pyc
+dist/

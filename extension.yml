@@ -1,0 +1,122 @@
+schema_version: "1.0"
+
+extension:
+  id: "sf"
+  name: "SFSpeckit — Salesforce Spec-Driven Development"
+  version: "1.0.0"
+  description: "Enterprise Salesforce SDLC with 17 commands for the full SDD lifecycle."
+  author: "Sumanth Yanamala"
+  repository: "https://github.com/ysumanth06/spec-kit-sf"
+  license: "MIT"
+  homepage: "https://sfspeckit.dev"
+
+requires:
+  speckit_version: ">=0.4.0"
+  tools:
+    - name: "sf"
+      version: ">=2.0.0"
+      required: true
+    - name: "gh"
+      version: ">=2.0.0"
+      required: false
+  commands:
+    - "speckit.tasks"
+
+provides:
+  commands:
+    # === Foundation ===
+    - name: "speckit.sf.constitution"
+      file: "commands/constitution.md"
+      description: "Establish Salesforce project principles with 9 articles and environmental discovery."
+
+    # === Core SDD Cycle ===
+    - name: "speckit.sf.specify"
+      file: "commands/specify.md"
+      description: "Create a Salesforce feature spec with object maps and security model."
+
+    - name: "speckit.sf.clarify"
+      file: "commands/clarify.md"
+      description: "Run the Salesforce gap analysis checklist against the specification."
+
+    - name: "speckit.sf.plan"
+      file: "commands/plan.md"
+      description: "Create a technical plan with force-app structure and blast radius analysis."
+
+    - name: "speckit.sf.stories"
+      file: "commands/stories.md"
+      description: "Generate Jira-ready developer stories with security matrices."
+
+    - name: "speckit.sf.implement"
+      file: "commands/implement.md"
+      description: "Implement a story file with auto-heal loop and scoring gates."
+
+    # === Extended Lifecycle ===
+    - name: "speckit.sf.review"
+      file: "commands/review.md"
+      description: "TPO and Architect review of generated stories before Jira creation."
+
+    - name: "speckit.sf.change"
+      file: "commands/change.md"
+      description: "Handle mid-sprint requirement changes with impact analysis."
+
+    - name: "speckit.sf.qa"
+      file: "commands/qa.md"
+      description: "Generate manual test scripts and run automated Apex/Jest tests."
+
+    - name: "speckit.sf.pr"
+      file: "commands/pr.md"
+      description: "Prepare a PR with scoring gates and code review checklist."
+
+    - name: "speckit.sf.verify"
+      file: "commands/verify.md"
+      description: "Generate formal Verification Evidence documents with coverage metrics."
+
+    - name: "speckit.sf.deploy"
+      file: "commands/deploy.md"
+      description: "Promote Salesforce code across environments (Dev to QA to UAT to Prod)."
+
+    - name: "speckit.sf.score"
+      file: "commands/score.md"
+      description: "555-point quality scoring dashboard across all stories in a feature."
+
+    - name: "speckit.sf.hotfix"
+      file: "commands/hotfix.md"
+      description: "Emergency production bug fix workflow with fast-track deployment."
+
+    - name: "speckit.sf.regression"
+      file: "commands/regression.md"
+      description: "Run full regression tests across all stories in a feature."
+
+    - name: "speckit.sf.release-notes"
+      file: "commands/release-notes.md"
+      description: "Auto-generate release notes from completed stories and test results."
+
+    - name: "speckit.sf.uat"
+      file: "commands/uat.md"
+      description: "Generate UAT scripts and manage business sign-offs."
+
+  config:
+    - name: "sf-config.yml"
+      template: "sf-config.template.yml"
+      description: "Salesforce project configuration (org aliases, scoring thresholds)"
+      required: false
+
+hooks:
+  after_tasks:
+    command: "speckit.sf.review"
+    optional: true
+    prompt: "Run Architect review of generated stories?"
+    description: "Validates story dependency graph, deployment order, merge conflict risks"
+
+  after_implement:
+    command: "speckit.sf.verify"
+    optional: true
+    prompt: "Generate verification evidence for the completed story?"
+    description: "Runs Apex/LWC tests and generates formal Verification Evidence document"
+
+tags:
+  - "salesforce"
+  - "enterprise"
+  - "sdlc"
+  - "apex"
+  - "devops"
