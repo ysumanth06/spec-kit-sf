@@ -18,10 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **17 Lifecycle Commands**: Complete coverage from Project Constitution to Multi-org Deployment.
 - **Zero-Dependency Mode**: Removed requirement for external foundational skills; all best-practice knowledge is now embedded in the extension documentation.
 
-### Changed
-- Migrated from standalone SFSpeckit scripts to Spec-Kit native markdown command architecture.
-- Replaced the custom Python/Bash CLI wrapper with the native `specify` engine.
-- Refined the "Spectrum Engine" logic into agent-native instructions.
+### Fixed
+- **Manifest**: Registered `/speckit.sf.setup` in `extension.yml` to enable CLI discovery.
+- **Documentation**: Standardized official homepage link to GitHub Pages across manifest and README.
+- **Branding**: Completed final audit and removal of legacy agentskills.io references.
 
 ### Removed
 - Deleted standalone migration guides in favor of a clean, unified workflow.
