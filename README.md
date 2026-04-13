@@ -6,7 +6,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Spec Kit](https://img.shields.io/badge/spec--kit-extension-purple.svg)](https://github.com/github/spec-kit)
 [![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](CHANGELOG.md)
-[![agentskills.io](https://img.shields.io/badge/agentskills.io-Certified-green)](https://agentskills.io)
 
 </div>
 
