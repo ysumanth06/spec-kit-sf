@@ -82,23 +82,24 @@ SFSpeckit is "Self-Contained but Aware," optimized for portability and maximum i
 
 Every project is governed by a project "North Star" that enforces these 9 architectural principles:
 
-| Article | Principle | What It Enforces |
-| :--- | :--- | :--- |
-| **I** | Metadata-First | Objects/Fields must be defined before logic references. |
-| **II** | Bulk Awareness | Mandatory 201+ record handling (bulkification). |
-| **III** | Declarative-First | Flow over Apex decision mandate. |
-| **IV** | Absolute Security | Enforces `with sharing` and `WITH USER_MODE`. |
-| **V** | PNB Test Pattern | Positive, Negative, and Bulk test scenarios in every story. |
-| **VI** | Clean Layers | Logic separation (Service, Selector, Domain layers). |
-| **VII** | Deployment Safety| Mandatory dry-runs and environmental parity. |
-| **VIII**| Platform Context | Prompt-ready architectural clarity. |
-| **IX**  | Modular Logic | Reusable, testable domain units. |
+| Article  | Principle         | What It Enforces                                            |
+| :------- | :---------------- | :---------------------------------------------------------- |
+| **I**    | Metadata-First    | Objects/Fields must be defined before logic references.     |
+| **II**   | Bulk Awareness    | Mandatory 201+ record handling (bulkification).             |
+| **III**  | Declarative-First | Flow over Apex decision mandate.                            |
+| **IV**   | Absolute Security | Enforces `with sharing` and `WITH USER_MODE`.               |
+| **V**    | PNB Test Pattern  | Positive, Negative, and Bulk test scenarios in every story. |
+| **VI**   | Clean Layers      | Logic separation (Service, Selector, Domain layers).        |
+| **VII**  | Deployment Safety | Mandatory dry-runs and environmental parity.                |
+| **VIII** | Platform Context  | Prompt-ready architectural clarity.                         |
+| **IX**   | Modular Logic     | Reusable, testable domain units.                            |
 
 ---
 
 ## 🤰 The Mother Story (Story 00)
 
 Parallel development is often blocked by metadata dependencies. SFSpeckit solves this with **Story 00**:
+
 - **Purpose**: A "Scaffold Build" that creates the functional shell (Fields, Objects, Apex headers).
 - **Impact**: Once Story 00 is implemented, the entire team is unblocked to work on subsequent logic-heavy stories in parallel.
 
@@ -106,25 +107,42 @@ Parallel development is often blocked by metadata dependencies. SFSpeckit solves
 
 ## 🛠️ Prerequisites & Dependencies
 
-| Tool | Version | Required | Purpose |
-| :--- | :--- | :--- | :--- |
-| **Spec Kit** | ≥ 0.4.0 | ✅ Yes | Core SDD framework engine. |
-| **Salesforce CLI** | ≥ 2.0.0 | ✅ Yes | Metadata operations and org connectivity. |
-| **SF Code Analyzer** | ≥ 5.0.0 | ✅ Yes | Static analysis (PMD 7) and data-flow analysis. |
-| **GitHub CLI** | ≥ 2.0.0 | ⚠️ Optional | Automated Pull Request creation and reviews. |
-| **DX Project** | — | ✅ Yes | Project must be an initialized Salesforce DX project. |
+| Tool                 | Version | Required    | Purpose                                               |
+| :------------------- | :------ | :---------- | :---------------------------------------------------- |
+| **Spec Kit**         | ≥ 0.4.0 | ✅ Yes      | Core SDD framework engine.                            |
+| **Salesforce CLI**   | ≥ 2.0.0 | ✅ Yes      | Metadata operations and org connectivity.             |
+| **SF Code Analyzer** | ≥ 5.0.0 | ✅ Yes      | Static analysis (PMD 7) and data-flow analysis.       |
+| **GitHub CLI**       | ≥ 2.0.0 | ⚠️ Optional | Automated Pull Request creation and reviews.          |
+| **DX Project**       | —       | ✅ Yes      | Project must be an initialized Salesforce DX project. |
 
 ---
 
 ## 🚀 Installation & Setup
 
-### 1. Add Extension
+You can install SFSpeckit using one of the following methods:
+
+### Option 1: Official Catalog (Recommended)
+Once the extension is accepted into the community catalog, you can install it directly by ID:
+```bash
+specify extension add sf
+```
+
+### Option 2: Direct Tag Release (Current Beta)
+To install the absolute latest stable version directly from GitHub:
 ```bash
 specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archive/refs/tags/v1.0.0.zip
 ```
 
-### 2. Automated Setup
-Install all external dependencies automatically:
+### Option 3: Local Development
+If you have cloned the repository locally:
+```bash
+specify extension add --dev /path/to/spec-kit-sf
+```
+
+---
+
+### Step 2: Automated Environment Setup
+After adding the extension, run the automated setup command to ensure your environment has all external dependencies (Salesforce CLI, GitHub CLI, and Code Analyzer) installed and configured:
 
 ```bash
 /speckit.sf.setup
@@ -134,31 +152,31 @@ Install all external dependencies automatically:
 
 ## 📋 Slash Commands
 
-| Command | Who | Purpose |
-| :--- | :--- | :--- |
-| `/speckit.sf.constitution` | TPO | **[DISCOVERY]** Establish project principles with org discovery. |
-| `/speckit.sf.specify` | TPO | Create functional feature specs. |
-| `/speckit.sf.clarify` | Arch | **[DRIFT ALERT]** Deep gap analysis and drift audit. |
-| `/speckit.sf.plan` | Arch | Technical blueprint and deployment order. |
-| `/speckit.sf.stories` | Arch | Break plan into Jira-ready developer stories. |
-| `/speckit.sf.implement` | Dev | **[AUTO-HEAL]** Build story with auto-heal loop. |
-| `/speckit.sf.review` | TPO/Arch | TPO and Architect review of generated stories. |
-| `/speckit.sf.verify` | Dev | Generate formal Verification Evidence documents. |
-| `/speckit.sf.pr` | Dev | Prepare PR summary via `gh cli`. |
-| `/speckit.sf.qa` | QA | Multi-persona UI validation and persona coverage. |
-| `/speckit.sf.uat` | BPO | Business UAT scripts and sign-offs. |
-| `/speckit.sf.score` | QA/Arch | 555-point real-time project health dashboard. |
-| `/speckit.sf.deploy` | Arch | Multi-org environment promotion logic. |
-| `/speckit.sf.change` | TPO | Impact analysis for mid-sprint requirement changes. |
-| `/speckit.sf.hotfix` | Dev | Emergency production patch workflow. |
-| `/speckit.sf.regression` | QA | Full feature regression before release. |
-| `/speckit.sf.release-notes` | TPO | Business-ready delivery summary. |
+| Command                     | Who      | Purpose                                                          |
+| :-------------------------- | :------- | :--------------------------------------------------------------- |
+| `/speckit.sf.constitution`  | TPO      | **[DISCOVERY]** Establish project principles with org discovery. |
+| `/speckit.sf.specify`       | TPO      | Create functional feature specs.                                 |
+| `/speckit.sf.clarify`       | Arch     | **[DRIFT ALERT]** Deep gap analysis and drift audit.             |
+| `/speckit.sf.plan`          | Arch     | Technical blueprint and deployment order.                        |
+| `/speckit.sf.stories`       | Arch     | Break plan into Jira-ready developer stories.                    |
+| `/speckit.sf.implement`     | Dev      | **[AUTO-HEAL]** Build story with auto-heal loop.                 |
+| `/speckit.sf.review`        | TPO/Arch | TPO and Architect review of generated stories.                   |
+| `/speckit.sf.verify`        | Dev      | Generate formal Verification Evidence documents.                 |
+| `/speckit.sf.pr`            | Dev      | Prepare PR summary via `gh cli`.                                 |
+| `/speckit.sf.qa`            | QA       | Multi-persona UI validation and persona coverage.                |
+| `/speckit.sf.uat`           | BPO      | Business UAT scripts and sign-offs.                              |
+| `/speckit.sf.score`         | QA/Arch  | 555-point real-time project health dashboard.                    |
+| `/speckit.sf.deploy`        | Arch     | Multi-org environment promotion logic.                           |
+| `/speckit.sf.change`        | TPO      | Impact analysis for mid-sprint requirement changes.              |
+| `/speckit.sf.hotfix`        | Dev      | Emergency production patch workflow.                             |
+| `/speckit.sf.regression`    | QA       | Full feature regression before release.                          |
+| `/speckit.sf.release-notes` | TPO      | Business-ready delivery summary.                                 |
 
 ---
 
 ## 📁 Repository Structure
 
-SFSpeckit organizes all SDD artifacts inside the `.specify` directory:
+SFSpeckit organizes all SDD artifacts inside the `.specify` directory to maintain a clean project root.
 
 ```text
 .specify/
@@ -184,7 +202,7 @@ sfdx-project.json                       # Core Salesforce Config
 
 ## 👨‍💻 Built by an Architect
 
-SFSpeckit has been re-architected as a Spec-Kit extension by **Sumanth Yanamala**, a Salesforce Architect.
+SFSpeckit has been re-architected as a Spec-Kit extension by **Sumanth Yanamala**, a Salesforce Architect, to meet the unique challenges of the Salesforce development lifecycle.
 
 Find more about the creator and his work on his **[Personal Website](https://ysumanth06.github.io/LinkedIn-Personal-Website/)**.
 
@@ -192,13 +210,13 @@ Find more about the creator and his work on his **[Personal Website](https://ysu
 
 ## 🌟 Giving Back
 
-This framework is my contribution to the incredible Salesforce community. I am sharing **SFSpeckit** as a way to give back to the platform and the people that have shaped my journey.
+This framework is my contribution to the incredible Salesforce community. Throughout my career, the community has been a constant source of support, learning, and inspiration. I am sharing **SFSpeckit** as a way to give back to the platform and the people that have shaped my professional journey.
 
 ---
 
 ## ❤️ Special Thanks
 
-Heartfelt thanks to my wife, **Srija**, for her unwavering support and patience throughout the late nights of building this framework.
+This project is the result of many months of work, often stretching into late nights and weekends. I want to extend my deepest gratitude to my wife, **Srija**, for her unwavering support, understanding, and patience throughout this journey. This project wouldn't have been possible without her.
 
 ---
 
