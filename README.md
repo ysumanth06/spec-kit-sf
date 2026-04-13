@@ -28,6 +28,13 @@ Constitution → Specify → Clarify → Plan → Stories → Implement → Veri
 specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archive/refs/tags/v1.0.0.zip
 ```
 
+### Automated Setup
+After adding the extension, run the automated setup command to install all external dependencies (Salesforce CLI, GitHub CLI, and Code Analyzer):
+
+```bash
+/speckit.sf.setup
+```
+
 ### Local Development
 ```bash
 git clone https://github.com/ysumanth06/spec-kit-sf.git
