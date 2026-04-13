@@ -6,18 +6,19 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Spec Kit](https://img.shields.io/badge/spec--kit-extension-purple.svg)](https://github.com/github/spec-kit)
 [![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](CHANGELOG.md)
+[![agentskills.io](https://img.shields.io/badge/agentskills.io-Certified-green)](https://agentskills.io)
 
 </div>
 
 <br/>
 
-SFSpeckit transforms Salesforce development from ad-hoc coding into a spec-driven, quality-gated process. It follows a deterministic lifecycle designed to eliminate AI hallucinations and architectural drift.
+SFSpeckit transforms Salesforce delivery into an evidence-based, autonomous engine driven by structured specifications. In the era of AI-agentic coding, jumping directly into implementation is the fastest way to hit context limits, create hallucinations, and accumulate technical debt.
 
 ---
 
 ## 🏗️ Spec-Driven Development (SDD) for AI
 
-SFSpeckit is built on the philosophy that **Requirements (Spec) must precede Design (Plan), which must precede Implementation (Build).**
+SFSpeckit is built on the philosophy of **Spec-Driven Development (SDD)**. It enforces a rigorous lifecycle that keeps the AI grounded and the human in the loop.
 
 ### The Tactical Lifecycle
 
@@ -49,43 +50,43 @@ graph TD
 2.  **PLAN (Define How)**: Metadata strategy, class structures, deployment order, and blast radius analysis.
 3.  **BUILD (Execute)**: Autonomous implementation with **Auto-Heal loops** and human verification.
 4.  **TEST (Validate)**: Multi-persona QA, UAT sign-offs, and multi-org regression testing.
-5.  **DEPLOY (Promote)**: Evidence-based promotion across Dev → QA → UAT → Prod.
+5.  **DEPLOY (Promote)**: Evidence-based promotion across complex environment landscapes.
 
 ---
 
 ## 🤖 Hybrid AI Architecture
 
-SFSpeckit uses a highly portable and intelligent model for execution:
+SFSpeckit is "Self-Contained but Aware," optimized for portability and maximum intelligence:
 
-- **Self-Contained**: Works perfectly as a standalone extension with Zero-Dependency. All best practices are encoded in internal logic.
-- **Smart-Aware**: Automatically checks for existing Salesforce foundational skills (`sf-apex`, `sf-lwc`, `sf-docs`) and uses them as **Optional Accelerators**.
+- **Self-Contained**: Works perfectly as a standalone extension with Zero-Dependency. All architectural best practices are encoded into the instruction set.
+- **Smart-Aware**: Automatically detects existing Salesforce foundational skills (`sf-apex`, `sf-lwc`, `sf-docs`) and uses them as **Optional Accelerators**.
 - **Unified Rubric**: The **555-point quality scoring** in [`docs/scoring.md`](docs/scoring.md) is the absolute Source of Truth for the AI evaluator.
 
 ---
 
 ## 🛡️ The 9 Salesforce Constitution Articles
 
-Every project is governed by a "North Star" document that enforces these 9 architectural principles on every AI decision:
+Every project is governed by a project "North Star" that enforces these 9 architectural principles:
 
 | Article | Principle | What It Enforces |
 | :--- | :--- | :--- |
-| **I** | Metadata-First | Objects/Fields must be defined before code references. |
+| **I** | Metadata-First | Objects/Fields must be defined before logic references. |
 | **II** | Bulk Awareness | Mandatory 201+ record handling (bulkification). |
 | **III** | Declarative-First | Flow over Apex decision mandate. |
 | **IV** | Absolute Security | Enforces `with sharing` and `WITH USER_MODE`. |
 | **V** | PNB Test Pattern | Positive, Negative, and Bulk test scenarios in every story. |
 | **VI** | Clean Layers | Logic separation (Service, Selector, Domain layers). |
 | **VII** | Deployment Safety| Mandatory dry-runs and environmental parity. |
-| **VIII** | Platform Context | Prompt-ready architectural clarity. |
-| **IX** | Modular Logic | Reusable, testable domain units. |
+| **VIII**| Platform Context | Prompt-ready architectural clarity. |
+| **IX**  | Modular Logic | Reusable, testable domain units. |
 
 ---
 
-## 🤱 The Mother Story (Story 00)
+## 🤰 The Mother Story (Story 00)
 
 Parallel development is often blocked by metadata dependencies. SFSpeckit solves this with **Story 00**:
 - **Purpose**: A "Scaffold Build" that creates the functional shell (Fields, Objects, Apex headers).
-- **Impact**: Once Story 00 is implemented, the entire team is unblocked to work on logic-heavy stories in parallel.
+- **Impact**: Once Story 00 is implemented, the entire team is unblocked to work on subsequent logic-heavy stories in parallel.
 
 ---
 
@@ -109,46 +110,83 @@ specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archiv
 ```
 
 ### 2. Automated Setup
-Once added, run the setup command to install all external dependencies (Salesforce CLI, GitHub CLI, and Code Analyzer) automatically:
+Install all external dependencies (Salesforce CLI, GitHub CLI, and Code Analyzer) automatically:
 
 ```bash
 /speckit.sf.setup
-```
-
-### 3. Verify
-```bash
-specify extension list
 ```
 
 ---
 
 ## 📋 Slash Commands
 
-| Category | Command | Purpose |
+| Command | Who | Purpose |
 | :--- | :--- | :--- |
-| **Foundation** | `/speckit.sf.constitution` | Establish project principles with org discovery. |
-| **Core SDD** | `/speckit.sf.specify` | Create a feature spec. |
-| | `/speckit.sf.clarify` | Run gap analysis and business clarification. |
-| | `/speckit.sf.plan` | Technical architecture and blast radius analysis. |
-| | `/speckit.sf.stories` | Generate Jira-ready stories with effort estimates. |
-| | `/speckit.sf.implement` | Build a story with auto-heal loop and scoring gates. |
-| **Lifecycle** | `/speckit.sf.review` | TPO + Architect approval gate. |
-| | `/speckit.sf.change` | Mid-sprint change management. |
-| | `/speckit.sf.verify` | Generate formal Verification Evidence. |
-| | `/speckit.sf.pr` | PR preparation with scoring and security scans. |
-| | `/speckit.sf.qa` | QA verification and persona coverage. |
-| | `/speckit.sf.uat` | Business sign-off management. |
-| | `/speckit.sf.score` | 555-point quality dashboard aggregator. |
-| | `/speckit.sf.deploy` | Multi-environment promotion. |
-| | `/speckit.sf.hotfix` | Emergency production fix workflow. |
-| | `/speckit.sf.regression` | Full regression testing. |
-| | `/speckit.sf.release-notes`| Auto-generated release documentation. |
+| `/speckit.sf.constitution` | TPO | **[DISCOVERY]** Establish project principles with org discovery. |
+| `/speckit.sf.specify` | TPO | Create functional feature specs. |
+| `/speckit.sf.clarify` | Arch | **[DRIFT ALERT]** Deep gap analysis and drift audit. |
+| `/speckit.sf.plan` | Arch | Technical blueprint and deployment order. |
+| `/speckit.sf.stories` | Arch | Break plan into Jira-ready developer stories. |
+| `/speckit.sf.implement` | Dev | **[AUTO-HEAL]** Build story with auto-heal loop. |
+| `/speckit.sf.review` | TPO/Arch | TPO and Architect review of generated stories. |
+| `/speckit.sf.verify` | Dev | Generate formal Verification Evidence documents. |
+| `/speckit.sf.pr` | Dev | Prepare PR summary via `gh cli`. |
+| `/speckit.sf.qa` | QA | Multi-persona UI validation and persona coverage. |
+| `/speckit.sf.uat` | BPO | Business UAT scripts and sign-offs. |
+| `/speckit.sf.score` | QA/Arch | 555-point real-time project health dashboard. |
+| `/speckit.sf.deploy` | Arch | Multi-org environment promotion logic. |
+| `/speckit.sf.change` | TPO | Impact analysis for mid-sprint requirement changes. |
+| `/speckit.sf.hotfix` | Dev | Emergency production patch workflow. |
+| `/speckit.sf.regression` | QA | Full feature regression before release. |
+| `/speckit.sf.release-notes` | TPO | Business-ready delivery summary. |
 
 ---
 
-## 🛡️ Success Architecture
+## 📁 Repository Structure
 
-SFSpeckit is designed to be **completely self-contained**. All Salesforce best practices are encoded in the internal logic, and the extension automatically performs **Auto-Heal** loops (up to 3 retries) to fix code that fails scoring gates.
+SFSpeckit organizes all SDD artifacts inside the `.specify` directory to maintain a clean project root.
+
+```text
+.specify/
+├── memory/
+│   └── constitution.md                 # Project "North Star"
+├── specs/                              # Feature Specifications
+│   └── 001-feature-name/
+│       ├── spec.md                     # Functional Spec
+│       ├── plan.md                     # Technical Plan
+│       ├── verification-evidence.md    # Automated Evidence
+│       └── stories/                    # Developer Work Units
+│           ├── 00-shell.md             # Mother Story (Metadata & Skeletons)
+│           └── 01-logic.md             # Implementation Story
+├── extensions/
+│   └── sf/                             # Extension Config
+│       └── sf-config.yml
+└── scripts/                            # Extension helper scripts
+force-app/                              # Salesforce Metadata
+sfdx-project.json                       # Core Salesforce Config
+```
+
+---
+
+## 👨‍💻 Built by an Architect
+
+SFSpeckit has been re-architected as a Spec-Kit extension by **Sumanth Yanamala**, a Salesforce Architect, to meet the unique challenges of the Salesforce development lifecycle.
+
+Find more about the creator and his work on his **[Personal Website](https://ysumanth06.github.io/LinkedIn-Personal-Website/)**.
+
+---
+
+## 🌟 Giving Back
+
+This framework is my contribution to the incredible Salesforce community. Throughout my career, the community has been a constant source of support, learning, and inspiration. I am sharing **SFSpeckit** as a way to give back to the platform and the people that have shaped my professional journey.
+
+---
+
+## ❤️ Special Thanks
+
+This project is the result of many months of work, often stretching into late nights and weekends. I want to extend my deepest gratitude to my wife, **Srija**, for her unwavering support, understanding, and patience throughout this journey. This project wouldn't have been possible without her.
+
+---
 
 ## ⚖️ License
 
