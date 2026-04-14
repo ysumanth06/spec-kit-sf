@@ -3,7 +3,6 @@
   <h1>SFSpeckit — Salesforce Spec-Driven Development</h1>
   <p><b>Enterprise-Grade Spec-Driven Development (SDD) Framework for Salesforce: AI-Powered, Human-in-the-Loop Engineering.</b></p>
 
-> [!NOTE]
 > ### 🚀 Official Community Announcement
 > SFSpeckit is the **first-ever Salesforce extension** officially accepted into the **[GitHub Spec Kit](https://github.com/github/spec-kit)** Community Catalog—the industry-leading SDD engine maintained by GitHub with over **87,000 stars**.
 
