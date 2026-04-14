@@ -5,6 +5,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Spec Kit](https://img.shields.io/badge/spec--kit-extension-purple.svg)](https://github.com/github/spec-kit)
+[![Spec Kit Stars](https://img.shields.io/github/stars/github/spec-kit?style=social)](https://github.com/github/spec-kit)
+[![Official Extension](https://img.shields.io/badge/Spec--Kit-Official%20Extension-blueviolet?logo=github)](https://github.com/github/spec-kit/pull/2208)
+[![Salesforce First](https://img.shields.io/badge/Salesforce-First%20Extension-00A1E0?logo=salesforce&logoColor=white)](https://github.com/github/spec-kit/pull/2208)
 [![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](CHANGELOG.md)
 
 </div>
