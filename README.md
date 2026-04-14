@@ -3,6 +3,10 @@
   <h1>SFSpeckit — Salesforce Spec-Driven Development</h1>
   <p><b>Enterprise-Grade Spec-Driven Development (SDD) Framework for Salesforce: AI-Powered, Human-in-the-Loop Engineering.</b></p>
 
+> [!NOTE]
+> ### 🚀 Official Community Announcement
+> SFSpeckit is the **first-ever Salesforce extension** officially accepted into the **[GitHub Spec Kit](https://github.com/github/spec-kit)** Community Catalog—the industry-leading SDD engine maintained by GitHub with over **87,000 stars**.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Spec Kit](https://img.shields.io/badge/spec--kit-extension-purple.svg)](https://github.com/github/spec-kit)
 [![Spec Kit Stars](https://img.shields.io/github/stars/github/spec-kit?style=social)](https://github.com/github/spec-kit)
@@ -121,12 +125,13 @@ Parallel development is often blocked by metadata dependencies. SFSpeckit solves
 
 ## 🚀 Installation & Setup
 
-SFSpeckit is an officially accepted community extension for **[GitHub Spec Kit](https://github.com/github/spec-kit)**—the core engine for Spec-Driven Development, maintained by GitHub with over **87,000 stars**. 
+SFSpeckit is an officially accepted community extension for **[GitHub Spec Kit](https://github.com/github/spec-kit)**—the core engine for Spec-Driven Development, maintained by GitHub with over **87,000 stars**.
 
 > [!TIP]
 > **Pioneering Status**: SFSpeckit is the **first-ever Salesforce-related extension** officially accepted into the Spec Kit Community Catalog.
 
 ### Step 1: Install Spec Kit CLI
+
 You must have the core Spec Kit toolkit installed before adding SFSpeckit.
 
 ```bash
@@ -135,6 +140,7 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 ```
 
 ### Step 2: Add SFSpeckit Extension
+
 Once Spec Kit is installed, you can add SFSpeckit directly from the official catalog:
 
 ```bash
@@ -142,12 +148,14 @@ Once Spec Kit is installed, you can add SFSpeckit directly from the official cat
 specify extension add sf
 ```
 
-*For local development or beta testing, you can also install via direct URL:*
+_For local development or beta testing, you can also install via direct URL:_
+
 ```bash
 specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archive/refs/tags/v1.0.0.zip
 ```
 
 ### Step 3: Automated Environment Setup
+
 After adding the extension, run the automated setup command. SFSpeckit will detect your OS and automatically configure your Salesforce environment, including the Salesforce CLI, GitHub CLI, and SF Code Analyzer:
 
 ```bash
