@@ -118,30 +118,34 @@ Parallel development is often blocked by metadata dependencies. SFSpeckit solves
 
 ## 🚀 Installation & Setup
 
-You can install SFSpeckit using one of the following methods:
+SFSpeckit is an officially accepted community extension for **[GitHub Spec Kit](https://github.com/github/spec-kit)**—the core engine for Spec-Driven Development, maintained by GitHub with over **87,000 stars**. 
 
-### Option 1: Official Catalog (Recommended)
-Once the extension is accepted into the community catalog, you can install it directly by ID:
+> [!TIP]
+> **Pioneering Status**: SFSpeckit is the **first-ever Salesforce-related extension** officially accepted into the Spec Kit Community Catalog.
+
+### Step 1: Install Spec Kit CLI
+You must have the core Spec Kit toolkit installed before adding SFSpeckit.
+
 ```bash
+# Install Spec Kit via uv (Official Recommended Method)
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+```
+
+### Step 2: Add SFSpeckit Extension
+Once Spec Kit is installed, you can add SFSpeckit directly from the official catalog:
+
+```bash
+# Add SFSpeckit to your active project
 specify extension add sf
 ```
 
-### Option 2: Direct Tag Release (Current Beta)
-To install the absolute latest stable version directly from GitHub:
+*For local development or beta testing, you can also install via direct URL:*
 ```bash
 specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archive/refs/tags/v1.0.0.zip
 ```
 
-### Option 3: Local Development
-If you have cloned the repository locally:
-```bash
-specify extension add --dev /path/to/spec-kit-sf
-```
-
----
-
-### Step 2: Automated Environment Setup
-After adding the extension, run the automated setup command to ensure your environment has all external dependencies (Salesforce CLI, GitHub CLI, and Code Analyzer) installed and configured:
+### Step 3: Automated Environment Setup
+After adding the extension, run the automated setup command. SFSpeckit will detect your OS and automatically configure your Salesforce environment, including the Salesforce CLI, GitHub CLI, and SF Code Analyzer:
 
 ```bash
 /speckit.sf.setup
