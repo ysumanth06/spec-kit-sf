@@ -20,13 +20,13 @@ Before executing, you may check for any installed agent skills related to:
 ## Prerequisites
 
 - Salesforce DX project initialized (`sfdx-project.json` exists)
-- `.specify/` directory exists (created by `specify init`)
+- `.specify/` directory exists (created automatically)
 
 ## Instructions
 
 ### Step 1: Read the Constitution Template
 
-Read the constitution template from `.specify/templates/constitution-template.md` (if it exists from the extension install) or use the built-in 9-article structure:
+Read the constitution template from `.specify/templates/constitution-template.md`. This contains 9 Salesforce-specific articles:
 
 1. **Article I: Metadata-First** — Features start with object/field definitions
 2. **Article II: Governor-Limit Awareness** — Bulkification, 251-record testing
@@ -81,7 +81,7 @@ Ask the user the following contextual questions to customize the constitution:
 
 Using the template and the user's answers:
 
-1. Create `.specify/memory/constitution.md`
+1. Create `.specify/memory/constitution.md` from `.specify/templates/constitution-template.md`
 2. Replace `$PROJECT_NAME` with the project name
 3. Replace `$DATE` with today's date
 4. Replace `$AUTHOR` with the user's name or "TPO"
@@ -102,13 +102,18 @@ Ask: "Does this constitution look correct? Any changes needed?"
 Once confirmed:
 - Save `.specify/memory/constitution.md`
 - Inform the user: "Constitution established. All SFSpeckit commands will reference this document."
+- Suggest next step: "Run `/speckit.sf.specify <feature description>` to create your first specification."
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+
+## Notes
+
+- The constitution is referenced by ALL other SFSpeckit skills
+- It should rarely change — use the Amendment Process (documented in the constitution) for modifications
+- The constitution is GUIDED (recommended with exception paths), not absolute
 
 ## Next Step
 
 Run `/speckit.sf.specify <feature description>` to create your first specification.
-
-## Notes
-
-- The constitution is referenced by ALL other SFSpeckit commands
-- It should rarely change — use the Amendment Process (documented in the constitution) for modifications
-- The constitution is GUIDED (recommended with exception paths), not absolute

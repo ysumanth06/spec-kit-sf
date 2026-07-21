@@ -1,5 +1,5 @@
 ---
-description: "Automated dependency checker and installer (sf, gh, sf-scanner)."
+description: "Automated dependency checker and installer (sf, gh, code-analyzer)."
 ---
 
 # Environment Setup
@@ -34,21 +34,31 @@ Identify whether the user is on **macOS**, **Windows**, or **Linux**.
    - **Windows**: Suggest `winget install GitHub.cli`
    - Ask for permission to run the install command.
 
-### Step 4: Check SF Code Analyzer (`sf-scanner`)
+### Step 4: Check SF Code Analyzer (`code-analyzer`)
 
-1. Run: `sf plugins inspect @salesforce/sfdx-scanner`
+1. Run: `sf plugins inspect code-analyzer`
 2. If found: Report version. Ensure version is ≥ 5.0.0 for PMD 7 support.
 3. If NOT found or version is < 5.0.0:
-   - Suggest: `sf plugins install @salesforce/sfdx-scanner@latest`
+   - Suggest: `sf plugins install code-analyzer`
    - Ask for permission to run the install command.
 
-### Step 5: Verify Permissions & Login
+### Step 5: Initialize SFSpeckit Project Structure
+
+1. Create required directories if missing:
+   - `.specify/memory/`
+   - `.specify/specs/`
+   - `.specify/templates/`
+   - `.specify/logs/tests/`
+2. Copy bundled templates from the extension install path (`.specify/extensions/sf/templates/`) into `.specify/templates/` when they are not already present.
+3. Copy `sf-config.template.yml` to `.specify/extensions/sf/sf-config.yml` if the project config does not exist.
+
+### Step 6: Verify Permissions & Login
 
 1. Check if user is authenticated to any org: `sf org list`
 2. If no orgs found:
    - Provide instruction: `sf org login web --alias dev`
 
-### Step 6: Summary Report
+### Step 7: Summary Report
 
 Generate a status table:
 

@@ -37,6 +37,7 @@ Before executing, you may check for any installed agent skills related to:
 
 ### Step 2: Create Feature Branch & Directory
 
+Run the branch creation script or perform equivalent:
 1. Determine next feature number (scan existing dirs in `.specify/specs/`)
 2. Create slug from feature description (lowercase, hyphens)
 3. Create directory: `.specify/specs/NNN-feature-slug/`
@@ -45,7 +46,7 @@ Before executing, you may check for any installed agent skills related to:
 
 ### Step 3: Read Template
 
-Read `.specify/templates/spec-template.md` if it exists — this is the structure to follow.
+Read `.specify/templates/spec-template.md` — this is the structure to follow.
 
 ### Step 4: Gather Requirements
 
@@ -89,14 +90,15 @@ Show the generated spec to the user. Highlight:
 - Any items marked `[NEEDS CLARIFICATION]`
 - Automation approach decisions made
 
+Suggest next steps:
+- **Requirement Audit**: "Run `/speckit.sf.clarify` to execute the 10-point Salesforce gap analysis and ensure the specification is complete."
+- **Technical Design**: "Once the spec is clarified, run `/speckit.sf.plan` to create the technical implementation plan."
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+
 ## Next Step
 
 - **Requirement Audit**: Run `/speckit.sf.clarify` to execute the gap analysis and ensure the specification is complete.
 - **Technical Design**: Once the spec is clarified, run `/speckit.sf.plan` to create the technical implementation plan.
-
-## Output
-
-- **Directory created**: `.specify/specs/NNN-feature-slug/`
-- **File created**: `.specify/specs/NNN-feature-slug/spec.md`
-- **Branch created**: `feature/NNN-feature-slug`
-- **Status**: Draft (with clarification markers if applicable)

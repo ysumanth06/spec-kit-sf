@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-07-21
+
+### Added
+- **New Command**: `/speckit.sf.analyze` — pre-implementation analysis with mother story lineage, component scope mapping, and org drift detection via `sf project retrieve preview`.
+- **Bundled Templates**: Shipped 9 Salesforce SDD templates in `templates/` (constitution, spec, plan, story, clarify, clarification report, QA test scripts, UAT scripts, hotfix).
+- **Sync Tooling**: Added `scripts/sync_skills_to_commands.py` to convert Cursor skills from the standalone SFSpeckit toolkit into Spec Kit extension command format.
+- **Setup Enhancements**: `/speckit.sf.setup` now initializes `.specify/` directories and copies bundled templates on first run.
+
+### Changed
+- **Full Skill Sync**: All 18 lifecycle commands updated from the latest standalone SFSpeckit skills (v1.1.0), adapted for the Spec Kit extension format (`.specify/` paths, `/speckit.sf.*` commands, optional accelerator discovery).
+- **Code Analyzer v5**: Migrated all scanner references from legacy `@salesforce/sfdx-scanner` / `sf scanner run` to `code-analyzer` plugin and `sf code-analyzer run`.
+- **Implement Workflow**: Deploy-before-commit guardrail, standardized branch naming, API limit kill switch in auto-heal loop, and expanded scoring gate validation.
+- **Verify Workflow**: Pre-verification deployment guardrails, runtime telemetry analysis, and formal evidence document template.
+- **Deploy Workflow**: Destructive changes human-in-the-loop gate and automated rollback strategy for phased deployments.
+- **PR Workflow**: Code Analyzer v5 security scan, DFA analysis, and scanner penalty scoring.
+- **Clarify Workflow**: Expanded stakeholder sign-off report with org drift audit and deep business gap analysis.
+- **Plan Workflow**: CLI-driven blast radius / impact analysis via Tooling API dependency queries.
+- **Extension Manifest**: Bumped to 19 commands; updated command descriptions to match latest skill capabilities.
+- **README**: Updated lifecycle diagram and command table to include `/speckit.sf.analyze` in the build phase.
+
+### Fixed
+- **Template Paths**: Corrected template references from `.agents/skills/` to `.specify/templates/` across all commands.
+- **Legacy References**: Removed Spectrum Engine and `sfspeckit-data/` path references from extension commands.
+
 ## [1.0.0] - 2026-04-13
 
 ### Added

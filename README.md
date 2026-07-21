@@ -12,7 +12,7 @@
 [![Salesforce First](https://img.shields.io/badge/Salesforce-First%20Extension-00A1E0?logo=salesforce&logoColor=white)](https://github.com/github/spec-kit/pull/2208)
 [![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red)](https://github.com/ysumanth06/spec-kit-sf)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/ysumanth06/spec-kit-sf/pulls)
-[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.0.0-green.svg)](CHANGELOG.md)
 
 </div>
 
@@ -43,9 +43,12 @@ graph TD
     end
     subgraph Plan ["2. PLAN (Define How)"]
         P["/speckit.sf.plan"] --> ST["/speckit.sf.stories"]
+        ST --> RV
     end
     subgraph Build ["3. BUILD (Execute)"]
-        I["/speckit.sf.implement"] --> V["/speckit.sf.verify"]
+        RV["/speckit.sf.review"] --> AN["/speckit.sf.analyze"]
+        AN --> I["/speckit.sf.implement"]
+        I --> V["/speckit.sf.verify"]
         V --> PR["/speckit.sf.pr"]
     end
     subgraph Test ["4. TEST (Validate)"]
@@ -151,7 +154,7 @@ specify extension add sf
 _For local development or beta testing, you can also install via direct URL:_
 
 ```bash
-specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archive/refs/tags/v1.0.0.zip
+specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archive/refs/tags/v2.0.0.zip
 ```
 
 ### Step 3: Automated Environment Setup
@@ -173,6 +176,7 @@ After adding the extension, run the automated setup command. SFSpeckit will dete
 | `/speckit.sf.clarify`       | Arch     | **[DRIFT ALERT]** Deep gap analysis and drift audit.             |
 | `/speckit.sf.plan`          | Arch     | Technical blueprint and deployment order.                        |
 | `/speckit.sf.stories`       | Arch     | Break plan into Jira-ready developer stories.                    |
+| `/speckit.sf.analyze`       | Dev      | Pre-implementation drift analysis and component lineage check.   |
 | `/speckit.sf.implement`     | Dev      | **[AUTO-HEAL]** Build story with auto-heal loop.                 |
 | `/speckit.sf.review`        | TPO/Arch | TPO and Architect review of generated stories.                   |
 | `/speckit.sf.verify`        | Dev      | Generate formal Verification Evidence documents.                 |

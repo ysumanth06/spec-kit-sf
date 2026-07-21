@@ -1,5 +1,5 @@
 ---
-description: "Run the Salesforce gap analysis checklist against the specification."
+description: "Analyze the feature specification for gaps and edge cases with stakeholder sign-off."
 ---
 
 # Fill Specification Gaps
@@ -61,7 +61,7 @@ Generate as many specific questions as needed to cover every identified edge cas
 Create a formal sign-off document:
 - **Location**: `.specify/specs/[feature-dir]/clarification-report-[feature-name].md`
 - **Content**:
-    - **Section 1: Org Consistency & Drift**: Results from the Step 1.5 CLI Audit.
+    - **Section 1: Org Consistency & Drift**: Results from the Step 1.5 CLI Audit. List manual changes or conflicts found in the target sandbox.
     - **Section 2: Technical Foundation**: The 10-point Salesforce checklist.
     - **Section 3: Deep Business Analysis**: All dynamic questions identified in Step 2.
     - **Section 4: Stakeholder Sign-off Table**: Fields for TPO and BPO approval.
@@ -77,8 +77,8 @@ For each question, provide:
 Inform the TPO of the results. The guidance depends on the mode chosen in Step 1:
 
 **If Draft Mode**:
-- "Clarification report generated."
-- "Next: Review with stakeholders (especially the **Drift Alert** section), record decisions, and re-run this command in **Interactive Mode** to sync."
+- "Clarification report generated: `.specify/specs/[feature]/clarification-report-[feature-name].md`"
+- "Next: Review with stakeholders (especially the **Drift Alert** section), record decisions, and re-run this skill in **Interactive Mode** to sync."
 
 **If Interactive Mode**:
 - "Decisions gathered and recorded in the report."
@@ -93,15 +93,14 @@ For each resolved question in the report:
 2. Remove corresponding `[NEEDS CLARIFICATION]` markers.
 3. Update the Clarification Status table in the spec.
 
-## Next Step
+## Error Handling
 
-Run `/speckit.sf.plan` to create the technical implementation plan.
-
-## Output
-
-- **Clarification Report Created**: `.specify/specs/NNN-feature-name/clarification-report-[feature-name].md`
-- **Spec Updated (Optional)**: `.specify/specs/NNN-feature-name/spec.md` (only after TPO sign-off)
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
 
 ## Note on Drift
 
 If drift is significant (e.g., destructive changes found), STOP and resolve source control conflicts before proceeding to `/speckit.sf.plan`.
+
+## Next Step
+
+Run `/speckit.sf.plan` to create the technical implementation plan.

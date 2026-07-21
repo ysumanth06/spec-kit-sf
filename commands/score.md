@@ -2,7 +2,7 @@
 description: "555-point quality scoring dashboard across all stories in a feature."
 ---
 
-# Quality Scoring Dashboard
+# Feature Quality Scoring Dashboard
 
 ## User Input
 
@@ -15,93 +15,122 @@ Use `scoring.*` thresholds if configured.
 
 ## Prerequisites
 
-- Feature directory exists: `.specify/specs/NNN-feature-name/`
-- At least one story file exists with scoring data
-- Constitution exists: `.specify/memory/constitution.md`
+- Feature code exists in `force-app/`
+- Story files exist in `.specify/specs/NNN-feature-name/`
 
 ## Instructions
 
-### Step 1: Read All Feature Stories
+### Step 1: Identify Feature Scope
 
-1. Read all `task_story_*.md` files in the feature directory
-2. Read the plan for scoring gate thresholds
-3. Read the constitution for scoring standards
+1. Read all story files in `.specify/specs/NNN-feature-name/`
+2. Collect all artifacts per story (Apex classes, LWC components, metadata)
+3. Build a complete file inventory for the feature
 
-### Step 2: Collect Scoring Data
+### Step 2: Run Metadata Scoring
 
-For each story, extract scores from the **Scoring Gates** section:
+For each custom object created/modified by this feature:
+- Evaluate metadata quality using the rubric in `docs/scoring.md`
+- Score across 6 categories (120 points max):
+  - Field definitions (types, required, descriptions)
+  - Relationship design (lookup vs. master-detail)
+  - Permission Sets (FLS coverage)
+  - Naming conventions
+  - Validation rules
+  - Documentation
 
-- **Metadata score** (X/120)
-- **Apex score** (X/150)
-- **Flow score** (X/110)
-- **LWC score** (X/165)
-- **Testing coverage** (X%)
-- **Security scanner** (violations count)
+### Step 3: Run Apex Scoring
 
-### Step 3: Calculate Feature-Level Scores
+For each Apex class created/modified:
+- Evaluate Apex quality using the rubric in `docs/scoring.md`
+- Score across 7 categories (150 points max):
+  - Bulkification compliance
+  - Security (sharing, user mode, no hardcoded IDs)
+  - SOLID principles
+  - Error handling
+  - Naming conventions
+  - Documentation/comments
+  - Performance optimization
 
-Aggregate across all stories:
+### Step 4: Run LWC Scoring
+
+For each LWC component created/modified:
+- Evaluate LWC quality using the rubric in `docs/scoring.md`
+- Score using PICKLES methodology (165 points max):
+  - Performance
+  - Interoperability
+  - Consistency
+  - Knowledge (documentation)
+  - Lifecycle management
+  - Error handling
+  - Security
+
+### Step 5: Run Test Scoring
+
+Evaluate test quality using the rubric in `docs/scoring.md`:
+- Score across 6 categories (120 points max):
+  - PNB pattern compliance
+  - TestDataFactory usage
+  - Assert class with messages
+  - SeeAllData=false compliance
+  - Coverage percentage
+  - Bulk test presence (251+)
+
+### Step 6: Generate Combined Dashboard
 
 ```markdown
-## Feature Quality Dashboard: NNN-feature-name
+
+## 📊 Quality Scoring Dashboard: Feature NNN-feature-name
+
+### Overall Feature Score
+| Category | Max | Actual | % | Status |
+|----------|-----|--------|---|--------|
+| Metadata | 120 | XX | XX% | ✅/❌ |
+| Apex | 150 | XX | XX% | ✅/❌ |
+| LWC | 165 | XX | XX% | ✅/❌ |
+| Testing | 120 | XX | XX% | ✅/❌ |
+| **Total** | **555** | **XX** | **XX%** | **✅/❌** |
 
 ### Per-Story Breakdown
+| Story | Status | Metadata | Apex | LWC | Testing | Total |
+|-------|--------|----------|------|-----|---------|-------|
+| Story-000 | DONE ✅ | 98/120 | 85/150 | — | 110/120 | 293 |
+| Story-001 | QA ⏳ | — | 125/150 | 142/165 | 108/120 | 375 |
+| Story-002 | REVIEW ⏳ | — | 95/150 | — | 100/120 | 195 |
 
-| Story | Metadata | Apex | Flow | LWC | Coverage | Scanner | Total |
-|-------|----------|------|------|-----|----------|---------|-------|
-| 00 | 98/120 | — | — | — | 95% | 0 Sev1 | 98 |
-| 01 | 105/120 | 135/150 | — | 148/165 | 92% | 0 Sev1 | 388 |
-| 02 | — | 128/150 | 95/110 | — | 88% | 0 Sev1 | 223 |
+### Top Improvements Needed
+1. [Story-002] Apex scoring: Add error handling to InvoiceProcessor (+15 pts)
+2. [Story-001] LWC scoring: Add ARIA labels to invoiceCreator (+10 pts)
+3. [Story-000] Metadata: Add field descriptions to Invoice__c fields (+8 pts)
 
-### Feature Summary
+### Code Coverage Summary
+| Class | Coverage | Target | Status |
+|-------|----------|--------|--------|
+| InvoiceService | 95% | 90% | ✅ |
+| InvoiceProcessor | 88% | 90% | ❌ |
+| InvoiceController | 92% | 90% | ✅ |
+| Overall | 91% | 90% | ✅ |
 
-| Layer | Average Score | Threshold | Status |
-|-------|--------------|-----------|--------|
-| Metadata | 102/120 (85%) | 84 (70%) | ✅ |
-| Apex | 132/150 (88%) | 90 (60%) | ✅ |
-| Flow | 95/110 (86%) | — | ✅ |
-| LWC | 148/165 (90%) | 125 (76%) | ✅ |
-| Coverage | 91% | 90% | ✅ |
-| Security | 0 Critical | 0 | ✅ |
-
-### Overall Feature Score: XXX/555
-
-### Quality Grade
-- **A (90-100%)**: Production-ready, exemplary quality
-- **B (80-89%)**: Production-ready, minor improvements possible
-- **C (70-79%)**: Acceptable, review recommended before production
-- **D (60-69%)**: Below standard, remediation required
-- **F (<60%)**: Not deployable, significant rework needed
+### Story Status Summary
+| Status | Count |
+|--------|-------|
+| DONE | X |
+| QA | X |
+| REVIEW | X |
+| IMPLEMENTING | X |
+| READY | X |
+| DRAFT | X |
 ```
 
-### Step 4: Identify Weak Areas
+### Step 7: Determine Feature Readiness
 
-For each layer below threshold:
-- List specific stories causing the drag
-- List specific deductions (from the scoring skill reports)
-- Suggest remediation actions
+- If ALL scoring gates pass and ALL stories are DONE → "Feature is ready for `/speckit.sf.deploy qa`"
+- If any gates fail → list specific improvements needed before deployment
+- If any stories are not DONE → list pending stories
 
-### Step 5: Constitution Compliance Check
+## Error Handling
 
-Verify all stories comply with key articles:
-- Article I: Metadata-first approach followed?
-- Article IV: All classes use `with sharing`?
-- Article V: PNB test pattern in all test classes?
-- Article VI: Separation of Concerns maintained?
-
-### Step 6: Generate Recommendations
-
-Based on the dashboard:
-- **Ready for promotion**: If all gates pass, recommend `/speckit.sf.deploy`
-- **Needs work**: If gates fail, list specific stories and layers to fix
-- **Partial promotion**: If some stories pass, recommend partial deployment
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
 
 ## Next Step
 
 If all scoring gates pass: Run `/speckit.sf.deploy qa` to promote to QA environment.
-
-## Output
-
-- **Dashboard**: Per-story and feature-level scoring breakdown
-- **Grade**: Overall quality grade (A/B/C/D/F)
-- **Recommendations**: Promotion readiness or remediation actions

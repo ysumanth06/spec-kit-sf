@@ -8,14 +8,9 @@ description: "Promote Salesforce code across environments (Dev to QA to UAT to P
 
 $ARGUMENTS
 
-## Supplemental Skill Discovery (Optional)
+## Extension Configuration
 
-Before executing, you may check for any installed agent skills related to:
-- **Salesforce Deployment** (`sf-deploy`, `sf-metadata`)
-- **Environment Management** (`sf-connected-apps`, `sf-data`)
-
-> [!NOTE]
-> These skills are **Optional Accelerators**. If found, use them to assist in promoting code across environments. However, the standards in `docs/scoring.md` are the **primary source of truth**.
+Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
 
 ## Prerequisites
 
@@ -43,7 +38,7 @@ Depending on target environment:
 
 #### For Production deployment:
 - [ ] All stories in DONE state
-- [ ] BPO UAT sign-off received
+- [ ] BPO UAT sign-off received (documented in story files)
 - [ ] Architect final sign-off
 - [ ] Release notes prepared
 
@@ -51,16 +46,18 @@ If any prerequisite fails → STOP and report what's missing.
 
 ### Step 2: Read Deployment Context
 
-1. Read the plan: `.specify/specs/NNN-feature-name/plan.md`
+1. Read the plan for deployment order: `.specify/specs/NNN-feature-name/plan.md`
 2. Read `sfdx-project.json` for source paths
-3. Confirm target org:
+3. Confirm target org alias is configured:
    ```bash
    sf org display --target-org $TARGET_ENV
    ```
 
-### Step 3: Dry-Run Validation
+### Step 3: Destructive Changes & Dry-Run Validation
 
-ALWAYS run dry-run first:
+1. **Check for Destructive Changes**: Look for `force-app/main/default/destructiveChanges.xml` (or equivalent path).
+2. **Human-in-the-Loop Gate**: If the file exists, STOP and output the contents to the console. Ask the Release Manager: "Destructive changes detected. Do you approve the execution of these deletions? (y/n)". Do NOT proceed without explicit typed approval.
+3. **Dry-Run**: ALWAYS run dry-run first. If destructive changes exist and were approved, append `--post-destructive-changes destructiveChanges.xml`.
 
 ```bash
 sf project deploy start \
@@ -71,9 +68,15 @@ sf project deploy start \
   --wait 15
 ```
 
-If dry-run fails: Parse errors, categorize them, report with suggested fixes, STOP.
+If dry-run fails:
+- Parse error output
+- Categorize errors: compilation, test failure, missing dependency
+- Report with suggested fixes
+- STOP — do not proceed to actual deployment
 
 ### Step 4: Deploy (if dry-run passes)
+
+If deploying the entire source directory at once works (most cases):
 
 ```bash
 sf project deploy start \
@@ -84,16 +87,65 @@ sf project deploy start \
 ```
 
 If metadata dependencies cause issues, deploy in phases:
-1. Objects + Fields (NoTestRun)
-2. Permission Sets (NoTestRun)
-3. Apex Classes + Tests (RunLocalTests)
-4. Flows as Draft (NoTestRun)
-5. Activate Flows
-6. LWC Components (NoTestRun)
+
+**Phase 1: Objects + Fields**
+```bash
+sf project deploy start \
+  --source-dir force-app/main/default/objects \
+  --target-org $TARGET_ENV \
+  --test-level NoTestRun
+```
+
+**Phase 2: Permission Sets**
+```bash
+sf project deploy start \
+  --source-dir force-app/main/default/permissionsets \
+  --target-org $TARGET_ENV \
+  --test-level NoTestRun
+```
+
+**Phase 3: Apex Classes + Tests**
+```bash
+sf project deploy start \
+  --source-dir force-app/main/default/classes \
+  --source-dir force-app/main/default/triggers \
+  --target-org $TARGET_ENV \
+  --test-level RunLocalTests
+```
+
+**Phase 4: Flows (as Draft)**
+```bash
+sf project deploy start \
+  --source-dir force-app/main/default/flows \
+  --target-org $TARGET_ENV \
+  --test-level NoTestRun
+```
+
+**Phase 5: Activate Flows**
+Activate flows using `sf project deploy start` after draft validation.
+
+**Phase 6: LWC Components**
+```bash
+sf project deploy start \
+  --source-dir force-app/main/default/lwc \
+  --target-org $TARGET_ENV \
+  --test-level NoTestRun
+```
+
+### Step 4.5: Automated Rollback Strategy
+
+If a phased deployment fails mid-flight (e.g., Phase 3 fails after Phase 1 and 2 succeeded), the org may be in an inconsistent state.
+1. **Halt and Alert**: Stop the deployment, report the specific errors, and alert the Release Manager.
+2. **Identify Previous State**: Identify the Git commit SHA from immediately before the deployment started.
+3. **Rollback Prompt**: Ask the user: "Deployment failed. Would you like to automatically rollback to the previous state (Commit SHA: $PREV_SHA)? (y/n)"
+4. **Execute Rollback**: If approved, run `git checkout $PREV_SHA` and execute an atomic `sf project deploy start --source-dir force-app --target-org $TARGET_ENV --ignore-conflicts` to revert the org metadata, then run `git checkout -` to return to the current branch.
 
 ### Step 5: Post-Deployment Verification
 
+After successful deployment:
+
 ```bash
+# Run all tests in the target org
 sf apex run test \
   --test-level RunLocalTests \
   --code-coverage \
@@ -101,16 +153,31 @@ sf apex run test \
   --target-org $TARGET_ENV
 ```
 
+Verify:
+- All tests pass
+- Coverage meets thresholds
+- No unexpected failures
+
 ### Step 6: Update Story Statuses
 
-- **QA**: Update statuses to QA-READY
-- **UAT**: Inform BPO that UAT environment is ready
-- **Production**: Update all statuses to DONE, record deployment date 🎉
+If deploying to QA:
+- Update story statuses to QA-READY
+
+If deploying to UAT:
+- Inform BPO that UAT environment is ready for validation
+- Reference UAT test scripts from `/speckit.sf.qa` output
+
+If deploying to Production:
+- Update all story statuses to DONE
+- Record deployment date
+- Congratulate the team 🎉
 
 ### Step 7: Report
 
 ```markdown
+
 ## Deployment Report
+
 - **Target**: $TARGET_ENV
 - **Status**: ✅ SUCCESS / ❌ FAILED
 - **Dry-run**: Passed
@@ -120,11 +187,13 @@ sf apex run test \
 - **Components Deployed**: XX
 ```
 
-## Output
+## Error Handling
 
-- **Deployment**: Code promoted to target environment
-- **Story files updated**: Status updated based on target
-- **Test results**: Post-deployment verification results
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+
+- **Dry-run failure**: Report errors, suggest fixes, do NOT proceed
+- **Deployment failure**: Report error, check for locking/conflicts, suggest rollback
+- **Test failure post-deploy**: Report failing tests, recommend investigation before promoting further
 
 ## Production Safety
 
@@ -134,9 +203,3 @@ For production deployments:
 3. Have rollback plan ready (previous Git tag)
 4. Monitor for 30 minutes post-deploy
 5. Verify with smoke tests in production
-
-## Error Handling
-
-- **Dry-run failure**: Report errors, suggest fixes, do NOT proceed
-- **Deployment failure**: Report error, check for locking/conflicts, suggest rollback
-- **Test failure post-deploy**: Report failing tests, recommend investigation

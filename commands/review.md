@@ -2,7 +2,7 @@
 description: "TPO and Architect review of generated stories before Jira creation."
 ---
 
-# Story Review Gate
+# Review Generated Stories
 
 ## User Input
 
@@ -64,6 +64,8 @@ For each story, check all required sections are populated:
 
 ### Step 6: Architect Validation Checklist
 
+Present the following checklist for the architect:
+
 **Architect Review:**
 - [ ] Dependency graph is correct (no circular deps, no missing refs)
 - [ ] Deployment order within each story is safe
@@ -78,15 +80,19 @@ For each story, check all required sections are populated:
 
 **TPO Review:**
 - [ ] All acceptance criteria from the spec are covered across stories
-- [ ] Stories are independently testable
+- [ ] Stories are independently testable (QA can verify one story without others)
 - [ ] Priority ordering matches business value (P1 stories first)
 - [ ] Estimation total aligns with sprint capacity
 - [ ] No scope creep (stories don't exceed spec boundaries)
 
 ### Step 8: Generate Review Report
 
+Create a review summary:
+
 ```markdown
+
 ## Story Review Summary
+
 - Total stories: X (including Story-000 Foundation)
 - Parallel stories: Y (can be assigned simultaneously)
 - Sequential stories: Z (have blocking dependencies)
@@ -95,6 +101,7 @@ For each story, check all required sections are populated:
 - Deployment order issues: [list or "none identified"]
 
 ## Recommended Sprint Allocation
+
 - Sprint 1: Story-000 + [parallel stories]
 - Sprint 2: [sequential stories that depend on Sprint 1]
 ```
@@ -104,12 +111,12 @@ For each story, check all required sections are populated:
 Once both TPO and Architect provide approvals:
 - Mark all story files' Status as **READY** (was DRAFT)
 - Inform: "Stories are approved. Create Jira tickets from these story files and assign to developers."
+- Suggest: "Developers will use `/speckit.sf.implement task_story_NN.md` to build their assigned story."
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
 
 ## Next Step
 
-Developers will use `/speckit.sf.implement <story_file>` to build their assigned story.
-
-## Output
-
-- **Files updated**: All `task_story_*.md` files → Status changed from DRAFT to READY
-- **Review artifacts**: Dependency graph, risk assessment, sprint allocation recommendation
+Developers should run `/speckit.sf.analyze <story_file>` before `/speckit.sf.implement <story_file>`.

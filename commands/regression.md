@@ -1,8 +1,8 @@
 ---
-description: "Run full regression tests across all stories in a feature."
+description: "Full feature regression before release."
 ---
 
-# Full Regression Testing
+# Feature Regression Testing
 
 ## User Input
 
@@ -29,15 +29,18 @@ Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
 
 ### Step 2: Deploy Full Feature Branch to QA
 
+Deploy the entire feature branch to the QA sandbox:
+
 ```bash
-# Dry-run first
 sf project deploy start \
   --source-dir force-app \
   --target-org qa \
   --test-level RunLocalTests \
   --dry-run
+```
 
-# If dry-run succeeds, deploy
+If dry-run succeeds:
+```bash
 sf project deploy start \
   --source-dir force-app \
   --target-org qa \
@@ -47,6 +50,8 @@ sf project deploy start \
 If dry-run fails: report compilation errors and identify which story likely introduced them.
 
 ### Step 3: Run ALL Apex Tests
+
+Run all local tests (not just story-specific ones):
 
 ```bash
 sf apex run test \
@@ -66,13 +71,16 @@ npx lwc-jest --json
 ### Step 5: Compare Results
 
 For each test:
-1. Check if it was PASS in any individual story's QA results
-2. If a previously-passing test now FAILS → **REGRESSION**
-3. Map the regression to which story likely introduced it via Git blame
+1. Check if this test was reported as PASS in any individual story's QA results
+2. If a previously-passing test now FAILS → this is a **REGRESSION**
+3. Map the regression to which story likely introduced it:
+   - Check which story's files the failing test references
+   - Check Git blame to see which story branch last modified the relevant code
 
 ### Step 6: Generate Regression Report
 
 ```markdown
+
 ## Regression Report: Feature NNN-feature-name
 
 ### Overall Results
@@ -85,6 +93,7 @@ For each test:
 | Class | Coverage | Per-Story Coverage | Delta |
 |-------|----------|-------------------|-------|
 | InvoiceService | 88% | 95% (story-01) | -7% ⚠️ |
+| InvoiceProcessor | 92% | 92% (story-02) | 0% ✅ |
 
 ### Regressions Detected
 | Test | Was | Now | Likely Cause |
@@ -93,24 +102,29 @@ For each test:
 
 ### No Regressions
 [List tests that continue to pass]
+
+### New Tests (not in individual stories)
+[List any tests that only exist in the merged branch]
 ```
 
 ### Step 7: Determine Verdict
 
-- **Zero regressions** → PASS: "Feature is regression-free."
-- **Regressions found** → FAIL: List specific regressions with likely causing story. Recommend fix before proceeding.
+- If **zero regressions** → PASS: "Feature is regression-free. Ready for `/speckit.sf.score`."
+- If **regressions found** → FAIL: 
+  - List specific regressions with likely causing story
+  - Recommend: "Return to developer of story-02 to fix regression before proceeding"
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+
+## Notes
+
+- This should be run AFTER all story PRs are merged to the feature branch
+- Regressions are often caused by shared objects: triggers, utility classes, permission sets
+- If a regression is found, the developer of the causing story should fix it, not the QA tester
+- After fix, re-run `/speckit.sf.regression` to confirm
 
 ## Next Step
 
 If PASS: Run `/speckit.sf.score` for the full quality dashboard.
-
-## Output
-
-- **Regression report**: Detailed analysis with attribution
-- **Verdict**: PASS (no regressions) or FAIL (regressions detected)
-
-## Notes
-
-- Run AFTER all story PRs are merged to the feature branch
-- Regressions are often caused by shared objects: triggers, utility classes, permission sets
-- After fix, re-run `/speckit.sf.regression` to confirm

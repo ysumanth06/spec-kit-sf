@@ -2,7 +2,7 @@
 description: "Generate UAT scripts and manage business sign-offs."
 ---
 
-# Business UAT Generation
+# Business UAT Scripts and Sign-Off
 
 ## User Input
 
@@ -14,7 +14,7 @@ Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
 
 ## Prerequisites
 
-- Story status is **QA** (technical verification passed via `/speckit.sf.qa`)
+- Story status is **QA** (technical verification passed)
 - Story code is deployed to UAT Sandbox (if applicable) or QA Sandbox
 - Constitution exists: `.specify/memory/constitution.md`
 
@@ -31,7 +31,7 @@ Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
 
 ### Step 2: Generate Business Walkthrough
 
-Generate a script that translates technical ACs into business steps.
+Read `.specify/templates/uat-script-template.md` and generate a script that translates technical ACs into business steps.
 
 **Guidelines for Business Language:**
 - **NO technical jargon**: Avoid "Apex", "Trigger", "SOQL", "LWC", "DML".
@@ -52,29 +52,26 @@ Show the generated UAT script to the BPO. Highlight:
 
 ### Step 5: Manage Sign-Off (Interactive)
 
-If the BPO provides feedback or sign-off:
+If the BPO provides feedback or sign-off after executing the script:
 1. Update the `uat_story_NN.md` file with the BPO's name, date, and verdict.
 2. If verdict is **PASS**:
-   - Update the story file status to **READY FOR PROD** or **DONE**.
+   - Update the story file (`task_story_NN.md`) status to **READY FOR PROD** or **DONE**.
 3. If verdict is **FAIL**:
    - Record the observation in the story file
    - Set story status back to **IMPLEMENTING** (for rework)
 
-## Next Step
-
-After UAT sign-off, run `/speckit.sf.deploy prod` to promote to production.
-
-## Output
-
-- **File created**: `.specify/specs/NNN-feature-name/uat_story_NN.md`
-- **Story file updated**: Status updated based on sign-off (if provided)
-
 ## Error Handling
 
-- **Story not ready**: If story status is not QA/REVIEW, warn that UAT might be premature.
-- **Missing Spec**: If `spec.md` is missing, use story ACs only but warn about limited context.
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+
+- **Story not ready**: If story status is not QA/REVIEW, warn the user that UAT might be premature.
+- **Missing Spec**: If `spec.md` is missing, use the story ACs only but warn that context might be limited.
 
 ## Notes
 
-- This command focuses on **BUSINESS** validation. For technical QA, use `/speckit.sf.qa`.
+- This skill focuses on the **BUSINESS** validation. For technical QA, use `/speckit.sf.qa`.
 - UAT should ideally be performed in a separate UAT Sandbox with production-like data.
+
+## Next Step
+
+After UAT sign-off, run `/speckit.sf.deploy prod` to promote to production.

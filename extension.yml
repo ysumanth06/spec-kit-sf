@@ -3,8 +3,8 @@ schema_version: "1.0"
 extension:
   id: "sf"
   name: "SFSpeckit — Salesforce Spec-Driven Development"
-  version: "1.0.0"
-  description: "Enterprise Salesforce SDLC with 18 commands for the full SDD lifecycle."
+  version: "2.0.0"
+  description: "Enterprise Salesforce SDLC with 19 commands for the full SDD lifecycle."
   author: "Sumanth Yanamala"
   repository: "https://github.com/ysumanth06/spec-kit-sf"
   license: "MIT"
@@ -40,7 +40,7 @@ provides:
 
     - name: "speckit.sf.clarify"
       file: "commands/clarify.md"
-      description: "Run the Salesforce gap analysis checklist against the specification."
+      description: "Analyze the feature specification for gaps and edge cases with stakeholder sign-off."
 
     - name: "speckit.sf.plan"
       file: "commands/plan.md"
@@ -49,6 +49,10 @@ provides:
     - name: "speckit.sf.stories"
       file: "commands/stories.md"
       description: "Generate Jira-ready developer stories with security matrices."
+
+    - name: "speckit.sf.analyze"
+      file: "commands/analyze.md"
+      description: "Pre-implementation analysis with mother story context and org drift detection."
 
     - name: "speckit.sf.implement"
       file: "commands/implement.md"

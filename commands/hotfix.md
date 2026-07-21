@@ -2,7 +2,7 @@
 description: "Emergency production bug fix workflow with fast-track deployment."
 ---
 
-# Emergency Production Fix
+# Emergency Production Hotfix
 
 ## User Input
 
@@ -15,113 +15,97 @@ Load extension config from `.specify/extensions/sf/sf-config.yml` if it exists.
 ## Prerequisites
 
 - Production access configured: `sf org login web --alias prod`
-- Developer authenticated to Dev Sandbox
-- Constitution exists at `.specify/memory/constitution.md` (for reference)
+- Developer authenticated to Dev Sandbox for testing
+- Constitution exists (for reference, not blocking)
 
 ## Instructions
 
-### Step 1: Assess the Bug
-
-Gather critical information:
-1. **Severity**: Is this a P0 (system down) or P1 (major feature broken)?
-2. **Impact**: How many users are affected?
-3. **Root cause**: What is the suspected cause?
-4. **Reproduction steps**: How to reproduce the bug?
-
-### Step 2: Create Hotfix Branch
+### Step 1: Create Hotfix Branch
 
 ```bash
 git checkout main
 git pull origin main
-git checkout -b hotfix/YYYYMMDD-brief-description
+git checkout -b hotfix/HOTFIX-$ID-$SLUG
 ```
 
-### Step 3: Create Minimal Hotfix Story
+### Step 2: Generate Minimal Story File
 
-Create a lightweight story file:
-- **Location**: `.specify/specs/hotfix/hotfix-YYYYMMDD-description.md`
-- **Content**: Minimal — just the bug description, fix approach, and test plan
-- **Skip**: Full scoring gates, full Constitution check (speed over ceremony)
+Read `.specify/templates/hotfix-template.md` and create a hotfix story:
+- Location: `.specify/specs/hotfixes/hotfix-$ID.md`
+- Auto-fill: bug description from user input, date, severity
+- Ask user for:
+  - Severity: Critical / High / Medium
+  - Environment where discovered
+  - Steps to reproduce
 
-### Step 4: Implement the Fix
+### Step 3: Root Cause Analysis
 
-1. Make the minimal code change to fix the bug
-2. Write a focused test that reproduces the bug and verifies the fix
-3. Run the test:
-   ```bash
-   sf apex run test --class-names [HotfixTestClass] --code-coverage --target-org dev
-   ```
+1. Analyze the bug description
+2. Use optional `sf-debug` accelerator skill if available if debug logs are available
+3. Identify the root cause file and line number
+4. Document in the hotfix story
 
-### Step 5: Security Quick-Check
+### Step 4: Implement Fix
 
-Even for hotfixes, verify:
-- [ ] No hardcoded IDs introduced
-- [ ] `with sharing` maintained
-- [ ] `WITH USER_MODE` on new SOQL (if any)
-- [ ] No credentials exposed
+1. Make the minimum code change to fix the bug
+2. Follow constitution articles (with sharing, user mode) even in hotfix
+3. Add/update the specific test for this bug scenario:
+   - Test that reproduces the exact bug (fails before fix, passes after)
+   - Bulk test if trigger-related
+
+### Step 5: Run Tests
 
 ```bash
-sf scanner run --target "force-app/main/default/classes/[ChangedFile].cls" --engine pmd
+sf apex run test --class-names [AffectedTestClass] --code-coverage --target-org dev
 ```
 
-### Step 6: Deploy to Production
+Verify:
+- New test passes
+- Existing tests still pass
+- Coverage not decreased
+
+### Step 6: Architect Review
+
+Hotfixes still require architect approval:
+- Present the fix for review
+- Show root cause and minimal change
+- Show test results
+- Get approval before production deployment
+
+### Step 7: Deploy to Production
 
 ```bash
-# Dry-run first (ALWAYS)
-sf project deploy start \
-  --source-dir force-app \
-  --target-org prod \
-  --test-level RunSpecifiedTests \
-  --tests [HotfixTestClass] \
-  --dry-run
+# Dry-run first
+sf project deploy start --source-dir force-app --target-org prod --test-level RunLocalTests --dry-run
 
-# If dry-run passes, deploy
-sf project deploy start \
-  --source-dir force-app \
-  --target-org prod \
-  --test-level RunSpecifiedTests \
-  --tests [HotfixTestClass]
+# Deploy
+sf project deploy start --source-dir force-app --target-org prod --test-level RunLocalTests
 ```
 
-### Step 7: Verify in Production
+### Step 8: Back-Port
 
-1. Confirm the bug is fixed in production
-2. Run smoke tests
-3. Monitor for 30 minutes
+After successful production deploy:
+```bash
+# Merge hotfix to main
+git checkout main
+git merge hotfix/HOTFIX-$ID-$SLUG
 
-### Step 8: Backport
+# Back-port to open feature branches
+git checkout feature/$OPEN_FEATURE_BRANCH
+git merge main
+```
 
-After production is stable:
-1. Merge hotfix branch to main: `git checkout main && git merge hotfix/...`
-2. Merge to any active feature branches that need the fix
-3. Update any affected story files if in progress
+### Step 9: Update Hotfix Story
 
-### Step 9: Post-Mortem
-
-Create a brief incident report:
-- What broke and when
-- Root cause
-- Fix applied
-- Prevention measures
-
-## Next Step
-
-After hotfix is deployed, run `/speckit.sf.release-notes` to update release documentation.
-
-## Output
-
-- **Hotfix deployed**: Code deployed to production
-- **Hotfix story**: `.specify/specs/hotfix/hotfix-YYYYMMDD-description.md`
-- **Test results**: Hotfix test verification
+- Mark hotfix story as DONE
+- Record deployment date and verified-by
 
 ## Error Handling
 
-- **Dry-run failure**: STOP. Do not deploy a hot fix that doesn't pass validation.
-- **Test failure**: STOP. Fix the test or the code before deploying.
-- **Deployment failure**: Escalate immediately. Check for locking, permissions, or compilation errors.
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
 
 ## Notes
 
-- Hotfixes bypass the full SDD cycle (no full specification, no story decomposition)
-- Minimum required: bug description, fix, test, deploy
-- Always backport to main and active feature branches after deployment
+- Hotfixes bypass specify/clarify/plan/tasks but NEVER bypass testing and architect review
+- Keep changes minimal — this is not the place for refactoring
+- Document the root cause for future reference (prevents recurrence)
