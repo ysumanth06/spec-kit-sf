@@ -4,8 +4,9 @@
   <p><b>Enterprise-Grade Spec-Driven Development (SDD) Framework for Salesforce: AI-Powered, Human-in-the-Loop Engineering.</b></p>
 
 > ### 🚀 Official Community Announcement
-> SFSpeckit is the **first-ever Salesforce extension** officially accepted into the **[GitHub Spec Kit](https://github.com/github/spec-kit)** Community Catalog—the industry-leading SDD engine maintained by GitHub with over **87,000 stars**.
+> SFSpeckit is the **first-ever Salesforce extension** officially accepted into the **[GitHub Spec Kit](https://github.com/github/spec-kit)** Community Catalog—the industry-leading SDD engine maintained by GitHub with over **141,000+ stars**.
 
+[![Featured at Dreamforce '26](docs/assets/badges/dreamforce.svg)](https://www.salesforce.com/plus/experience/dreamforce_2026/series/developers_at_dreamforce_2026/episode/episode-s1e17)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Spec Kit Stars](https://img.shields.io/github/stars/github/spec-kit?style=social)](https://github.com/github/spec-kit)
 [![Official Extension](https://img.shields.io/badge/Spec--Kit-Official%20Extension-blueviolet?logo=github)](https://github.com/github/spec-kit/blob/main/extensions/catalog.community.json)
@@ -19,6 +20,20 @@
 <br/>
 
 SFSpeckit transforms Salesforce delivery into an evidence-based, autonomous engine driven by structured specifications.
+
+---
+
+## 🌟 Featured at Dreamforce 2026 🚀
+
+SFSpeckit was featured in Salesforce's Dreamforce 2026 session, **"Explore the Agentic App Dev Roadmap,"** as an open-source GitHub Spec-Kit plugin tailored for Salesforce development.
+
+The session covered Salesforce's evolving approach to agentic application development, including Spec-Driven Development and AI-assisted developer workflows.
+
+🎥 **[Watch the Dreamforce 2026 session on Salesforce+](https://www.salesforce.com/plus/experience/dreamforce_2026/series/developers_at_dreamforce_2026/episode/episode-s1e17)**
+
+* **Session:** Explore the Agentic App Dev Roadmap
+* **Dreamforce:** 2026
+* **Speakers:** Dan Fernandez, VP, Product, Developer Services, Salesforce; Karishma Lalwani, Vice President, Product Management, Salesforce
 
 ---
 
@@ -128,7 +143,7 @@ Parallel development is often blocked by metadata dependencies. SFSpeckit solves
 
 ## 🚀 Installation & Setup
 
-SFSpeckit is an officially accepted community extension for **[GitHub Spec Kit](https://github.com/github/spec-kit)**—the core engine for Spec-Driven Development, maintained by GitHub with over **87,000 stars**.
+SFSpeckit is an officially accepted community extension for **[GitHub Spec Kit](https://github.com/github/spec-kit)**—the core engine for Spec-Driven Development, maintained by GitHub with over **141,000+ stars**.
 
 > [!TIP]
 > **Pioneering Status**: SFSpeckit is the **first-ever Salesforce-related extension** officially accepted into the Spec Kit Community Catalog.
