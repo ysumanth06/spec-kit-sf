@@ -3,17 +3,31 @@
   <h1>SFSpeckit — Salesforce Spec-Driven Development</h1>
   <p><b>Enterprise-Grade Spec-Driven Development (SDD) Framework for Salesforce: AI-Powered, Human-in-the-Loop Engineering.</b></p>
 
-> ### 🚀 Official Community Announcement
-> SFSpeckit is the **first-ever Salesforce extension** officially accepted into the **[GitHub Spec Kit](https://github.com/github/spec-kit)** Community Catalog—the industry-leading SDD engine maintained by GitHub with over **141,000+ stars**.
+> [!IMPORTANT]
+> ### 🚨 Repository Moved to Evernorth Open Source
+> **SFSpeckit has officially migrated to the [Evernorth Open Source Software organization](https://github.com/Evernorth/spec-kit-sf).**
+> 
+> * **New Official Repository**: **[`https://github.com/Evernorth/spec-kit-sf`](https://github.com/Evernorth/spec-kit-sf)**
+> * **Official Catalog Release**: **`v2.0.1`** (Apache-2.0 licensed, 19 commands, bundled SDD templates)
+> * **For Existing Users**: To migrate your local installation to the official Evernorth repository, simply run:
+>   ```bash
+>   specify extension update
+>   ```
+>   or to install fresh:
+>   ```bash
+>   specify extension add sf
+>   ```
+>   Spec Kit will now automatically pull the official Evernorth OSS repository!
+> * **Sunset Schedule**: This legacy repository is now in maintenance mode and will be **archived and made private on January 1, 2027**. Please direct all new stars, issues, and contributions to **[Evernorth/spec-kit-sf](https://github.com/Evernorth/spec-kit-sf)**.
 
 [![Featured at Dreamforce '26](docs/assets/badges/dreamforce.svg)](https://www.salesforce.com/plus/experience/dreamforce_2026/series/developers_at_dreamforce_2026/episode/episode-s1e17)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Spec Kit Stars](https://img.shields.io/github/stars/github/spec-kit?style=social)](https://github.com/github/spec-kit)
 [![Official Extension](https://img.shields.io/badge/Spec--Kit-Official%20Extension-blueviolet?logo=github)](https://github.com/github/spec-kit/blob/main/extensions/catalog.community.json)
 [![Salesforce First](https://img.shields.io/badge/Salesforce-First%20Extension-00A1E0?logo=salesforce&logoColor=white)](https://github.com/github/spec-kit/pull/2208)
-[![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red)](https://github.com/ysumanth06/spec-kit-sf)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/ysumanth06/spec-kit-sf/pulls)
-[![Version](https://img.shields.io/badge/version-2.0.0-green.svg)](CHANGELOG.md)
+[![Open Source](https://img.shields.io/badge/Open%20Source-Evernorth-orange.svg)](https://github.com/Evernorth/spec-kit-sf)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Evernorth/spec-kit-sf/pulls)
+[![Version](https://img.shields.io/badge/version-2.0.1-green.svg)](https://github.com/Evernorth/spec-kit-sf/releases/tag/v2.0.1)
 
 </div>
 
@@ -169,7 +183,7 @@ specify extension add sf
 _For local development or beta testing, you can also install via direct URL:_
 
 ```bash
-specify extension add sf --from https://github.com/ysumanth06/spec-kit-sf/archive/refs/tags/v2.0.0.zip
+specify extension add sf --from https://github.com/Evernorth/spec-kit-sf/archive/refs/tags/v2.0.1.zip
 ```
 
 ### Step 3: Automated Environment Setup
